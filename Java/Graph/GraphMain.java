@@ -11,7 +11,7 @@ public class GraphMain {
             int n = Integer.parseInt(n_m[0]);
             int m = Integer.parseInt(n_m[1]);
 
-            Graph g = new Graph(n);
+            GraphMat g = new GraphMat(n);
             for (int i = 0; i < m;i++){
                 String[] u_v = reader.readLine().split(" ");
                 int u = Integer.parseInt(u_v[0]);
