@@ -26,12 +26,11 @@ public class Edge implements Comparable<Edge>{
 
     @Override
     public String toString() {
-        return "("+start+","+finish+")"+"("+weight+")";
+        return start+" -> "+finish+" ("+weight+")";
     }
 
     @Override
     public int compareTo(Edge e) {
-        if(Math.abs(Double.compare(weight,e.weight)) < 0.00001)return start - e.start;
         return Double.compare(weight,e.weight);
     }
 }

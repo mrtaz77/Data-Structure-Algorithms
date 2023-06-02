@@ -170,4 +170,26 @@ public class GraphMat{
         array[i] = false;
         return false;
     }
+
+    LL<Edge> MSTPrim(int start){
+        MinHeap<Edge> minheap = new MinHeap<Edge>();
+        LL<Edge> mst = new LL<>();
+
+        minheap.Insert(new Edge(-1,start,0));
+
+        while(minheap.size() > 0){
+            Edge e = minheap.ExtractMin();
+            int v = e.getFinish();
+            if(getvis(v) == 0){
+                setvis(v, 1);
+                if(e.getStart() != -1)mst.pushBack(e);
+                for(int w = first(v); w < numVertices(); w = next(v,w)){
+                    if(getvis(w) == 0){
+                        minheap.Insert(new Edge(v,w,adjMat[v][w]));
+                    }
+                }
+            }
+        }
+        return mst;
+    }
 }
