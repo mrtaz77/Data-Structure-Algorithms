@@ -1,0 +1,134 @@
+{
+    "sourceFile": "Java/Graph/GraphMST.java",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 29,
+            "patches": [
+                {
+                    "date": 1685809799342,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1685809918393,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,8 @@\n                 Double w = Double.parseDouble(u_v[2]);\r\n                 g.setEdge(u,v,w);   \r\n             }\r\n             System.out.println(g);\r\n-            int start = Integer.parseInt(reader.readLine());\r\n             writer.write(\"MST (Prim + Minheap): \\n\");\r\n             LL<Edge> edges_of_mst = g.MSTPrim();\r\n             double weight = 0;\r\n             while (edges_of_mst.size() != 0){\r\n"
+                },
+                {
+                    "date": 1685810567460,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,10 +20,11 @@\n                 Double w = Double.parseDouble(u_v[2]);\r\n                 g.setEdge(u,v,w);   \r\n             }\r\n             System.out.println(g);\r\n+            int start = Integer.parseInt(reader.readLine());\r\n             writer.write(\"MST (Prim + Minheap): \\n\");\r\n-            LL<Edge> edges_of_mst = g.MSTPrim();\r\n+            LL<Edge> edges_of_mst = g.MSTPrim(start);\r\n             double weight = 0;\r\n             while (edges_of_mst.size() != 0){\r\n                 Edge e = edges_of_mst.erase();\r\n                 writer.write(e + \"\\n\");\r\n"
+                },
+                {
+                    "date": 1685811641707,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,8 +18,9 @@\n                 int u = Integer.parseInt(u_v[0]);\r\n                 int v = Integer.parseInt(u_v[1]);\r\n                 Double w = Double.parseDouble(u_v[2]);\r\n                 g.setEdge(u,v,w);   \r\n+                \r\n             }\r\n             System.out.println(g);\r\n             int start = Integer.parseInt(reader.readLine());\r\n             writer.write(\"MST (Prim + Minheap): \\n\");\r\n"
+                },
+                {
+                    "date": 1685811655191,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,15 +12,16 @@\n             int n = Integer.parseInt(n_m[0]);\r\n             int m = Integer.parseInt(n_m[1]);\r\n \r\n             GraphMat g = new GraphMat(n);\r\n+            GraphMat help = new GraphMat(n);\r\n             for (int i = 0; i < m;i++){\r\n                 String[] u_v = reader.readLine().split(\" \");\r\n                 int u = Integer.parseInt(u_v[0]);\r\n                 int v = Integer.parseInt(u_v[1]);\r\n                 Double w = Double.parseDouble(u_v[2]);\r\n                 g.setEdge(u,v,w);   \r\n-                \r\n+\r\n             }\r\n             System.out.println(g);\r\n             int start = Integer.parseInt(reader.readLine());\r\n             writer.write(\"MST (Prim + Minheap): \\n\");\r\n"
+                },
+                {
+                    "date": 1685811662332,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,8 +19,9 @@\n                 int u = Integer.parseInt(u_v[0]);\r\n                 int v = Integer.parseInt(u_v[1]);\r\n                 Double w = Double.parseDouble(u_v[2]);\r\n                 g.setEdge(u,v,w);   \r\n+                help.s\r\n \r\n             }\r\n             System.out.println(g);\r\n             int start = Integer.parseInt(reader.readLine());\r\n"
+                },
+                {
+                    "date": 1685811673722,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,9 @@\n                 int u = Integer.parseInt(u_v[0]);\r\n                 int v = Integer.parseInt(u_v[1]);\r\n                 Double w = Double.parseDouble(u_v[2]);\r\n                 g.setEdge(u,v,w);   \r\n-                help.s\r\n+                help.setEdge(u, v, i);\r\n \r\n             }\r\n             System.out.println(g);\r\n             int start = Integer.parseInt(reader.readLine());\r\n"
+                },
+                {
+                    "date": 1685811680160,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,9 @@\n                 int u = Integer.parseInt(u_v[0]);\r\n                 int v = Integer.parseInt(u_v[1]);\r\n                 Double w = Double.parseDouble(u_v[2]);\r\n                 g.setEdge(u,v,w);   \r\n-                help.setEdge(u, v, i);\r\n+                help.setEdge(u, v, );\r\n \r\n             }\r\n             System.out.println(g);\r\n             int start = Integer.parseInt(reader.readLine());\r\n"
+                },
+                {
+                    "date": 1685811686537,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,9 @@\n                 int u = Integer.parseInt(u_v[0]);\r\n                 int v = Integer.parseInt(u_v[1]);\r\n                 Double w = Double.parseDouble(u_v[2]);\r\n                 g.setEdge(u,v,w);   \r\n-                help.setEdge(u, v, );\r\n+                help.setEdge(u, v, Math.min);\r\n \r\n             }\r\n             System.out.println(g);\r\n             int start = Integer.parseInt(reader.readLine());\r\n"
+                },
+                {
+                    "date": 1685811816733,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,9 @@\n                 int u = Integer.parseInt(u_v[0]);\r\n                 int v = Integer.parseInt(u_v[1]);\r\n                 Double w = Double.parseDouble(u_v[2]);\r\n                 g.setEdge(u,v,w);   \r\n-                help.setEdge(u, v, Math.min);\r\n+                help.setEdge(u, v, Math.min());\r\n \r\n             }\r\n             System.out.println(g);\r\n             int start = Integer.parseInt(reader.readLine());\r\n"
+                },
+                {
+                    "date": 1685811829902,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,9 @@\n                 int u = Integer.parseInt(u_v[0]);\r\n                 int v = Integer.parseInt(u_v[1]);\r\n                 Double w = Double.parseDouble(u_v[2]);\r\n                 g.setEdge(u,v,w);   \r\n-                help.setEdge(u, v, Math.min());\r\n+                help.setEdge(u, v, Math.min(g));\r\n \r\n             }\r\n             System.out.println(g);\r\n             int start = Integer.parseInt(reader.readLine());\r\n"
+                },
+                {
+                    "date": 1685811874418,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,9 @@\n                 int u = Integer.parseInt(u_v[0]);\r\n                 int v = Integer.parseInt(u_v[1]);\r\n                 Double w = Double.parseDouble(u_v[2]);\r\n                 g.setEdge(u,v,w);   \r\n-                help.setEdge(u, v, Math.min(g));\r\n+                help.setEdge(u, v, Math.min(g.getEdge(m, m)));\r\n \r\n             }\r\n             System.out.println(g);\r\n             int start = Integer.parseInt(reader.readLine());\r\n"
+                },
+                {
+                    "date": 1685811882249,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,9 @@\n                 int u = Integer.parseInt(u_v[0]);\r\n                 int v = Integer.parseInt(u_v[1]);\r\n                 Double w = Double.parseDouble(u_v[2]);\r\n                 g.setEdge(u,v,w);   \r\n-                help.setEdge(u, v, Math.min(g.getEdge(m, m)));\r\n+                help.setEdge(u, v, Math.min(g.getEdge(u, v),));\r\n \r\n             }\r\n             System.out.println(g);\r\n             int start = Integer.parseInt(reader.readLine());\r\n"
+                },
+                {
+                    "date": 1685811887574,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,9 @@\n                 int u = Integer.parseInt(u_v[0]);\r\n                 int v = Integer.parseInt(u_v[1]);\r\n                 Double w = Double.parseDouble(u_v[2]);\r\n                 g.setEdge(u,v,w);   \r\n-                help.setEdge(u, v, Math.min(g.getEdge(u, v),));\r\n+                help.setEdge(u, v, Math.min(g.getEdge(u, v),g.getEdge(v, w)));\r\n \r\n             }\r\n             System.out.println(g);\r\n             int start = Integer.parseInt(reader.readLine());\r\n"
+                },
+                {
+                    "date": 1685811928446,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,15 +19,15 @@\n                 int u = Integer.parseInt(u_v[0]);\r\n                 int v = Integer.parseInt(u_v[1]);\r\n                 Double w = Double.parseDouble(u_v[2]);\r\n                 g.setEdge(u,v,w);   \r\n-                help.setEdge(u, v, Math.min(g.getEdge(u, v),g.getEdge(v, w)));\r\n+                help.setEdge(u, v, Math.min(g.getEdge(u, v),g.getEdge(v, u)));\r\n \r\n             }\r\n             System.out.println(g);\r\n             int start = Integer.parseInt(reader.readLine());\r\n             writer.write(\"MST (Prim + Minheap): \\n\");\r\n-            LL<Edge> edges_of_mst = g.MSTPrim(start);\r\n+            LL<Edge> edges_of_mst = help.MSTPrim(start);\r\n             double weight = 0;\r\n             while (edges_of_mst.size() != 0){\r\n                 Edge e = edges_of_mst.erase();\r\n                 writer.write(e + \"\\n\");\r\n"
+                },
+                {
+                    "date": 1685811951205,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -29,9 +29,9 @@\n             LL<Edge> edges_of_mst = help.MSTPrim(start);\r\n             double weight = 0;\r\n             while (edges_of_mst.size() != 0){\r\n                 Edge e = edges_of_mst.erase();\r\n-                writer.write(e + \"\\n\");\r\n+                \r\n                 weight += e.getWeight();\r\n             }\r\n             writer.write(\"MST (Prim + Minheap) cost: \"+weight);\r\n             writer.close();\r\n"
+                },
+                {
+                    "date": 1685811959379,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -29,9 +29,9 @@\n             LL<Edge> edges_of_mst = help.MSTPrim(start);\r\n             double weight = 0;\r\n             while (edges_of_mst.size() != 0){\r\n                 Edge e = edges_of_mst.erase();\r\n-                \r\n+                if(g.get)\r\n                 weight += e.getWeight();\r\n             }\r\n             writer.write(\"MST (Prim + Minheap) cost: \"+weight);\r\n             writer.close();\r\n"
+                },
+                {
+                    "date": 1685811965414,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -29,9 +29,9 @@\n             LL<Edge> edges_of_mst = help.MSTPrim(start);\r\n             double weight = 0;\r\n             while (edges_of_mst.size() != 0){\r\n                 Edge e = edges_of_mst.erase();\r\n-                if(g.get)\r\n+                if(g.getEdge(e.s, start))\r\n                 weight += e.getWeight();\r\n             }\r\n             writer.write(\"MST (Prim + Minheap) cost: \"+weight);\r\n             writer.close();\r\n"
+                },
+                {
+                    "date": 1685811974789,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -29,9 +29,9 @@\n             LL<Edge> edges_of_mst = help.MSTPrim(start);\r\n             double weight = 0;\r\n             while (edges_of_mst.size() != 0){\r\n                 Edge e = edges_of_mst.erase();\r\n-                if(g.getEdge(e.s, start))\r\n+                if(g.getEdge(e.getStart(), e.getFinish()))\r\n                 weight += e.getWeight();\r\n             }\r\n             writer.write(\"MST (Prim + Minheap) cost: \"+weight);\r\n             writer.close();\r\n"
+                },
+                {
+                    "date": 1685811981804,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -29,9 +29,9 @@\n             LL<Edge> edges_of_mst = help.MSTPrim(start);\r\n             double weight = 0;\r\n             while (edges_of_mst.size() != 0){\r\n                 Edge e = edges_of_mst.erase();\r\n-                if(g.getEdge(e.getStart(), e.getFinish()))\r\n+                if(g.getEdge(e.getStart(), e.getFinish()) == e.getWeight())\r\n                 weight += e.getWeight();\r\n             }\r\n             writer.write(\"MST (Prim + Minheap) cost: \"+weight);\r\n             writer.close();\r\n"
+                },
+                {
+                    "date": 1685811987870,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -29,9 +29,9 @@\n             LL<Edge> edges_of_mst = help.MSTPrim(start);\r\n             double weight = 0;\r\n             while (edges_of_mst.size() != 0){\r\n                 Edge e = edges_of_mst.erase();\r\n-                if(g.getEdge(e.getStart(), e.getFinish()) == e.getWeight())\r\n+                if(g.getEdge(e.getStart(), e.getFinish()) == e.getWeight())writer\r\n                 weight += e.getWeight();\r\n             }\r\n             writer.write(\"MST (Prim + Minheap) cost: \"+weight);\r\n             writer.close();\r\n"
+                },
+                {
+                    "date": 1685812021741,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -29,9 +29,9 @@\n             LL<Edge> edges_of_mst = help.MSTPrim(start);\r\n             double weight = 0;\r\n             while (edges_of_mst.size() != 0){\r\n                 Edge e = edges_of_mst.erase();\r\n-                if(g.getEdge(e.getStart(), e.getFinish()) == e.getWeight())writer\r\n+                if(g.getEdge(e.getStart(), e.getFinish()) == e.getWeight())writer.write()\r\n                 weight += e.getWeight();\r\n             }\r\n             writer.write(\"MST (Prim + Minheap) cost: \"+weight);\r\n             writer.close();\r\n"
+                },
+                {
+                    "date": 1685812032105,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -29,9 +29,9 @@\n             LL<Edge> edges_of_mst = help.MSTPrim(start);\r\n             double weight = 0;\r\n             while (edges_of_mst.size() != 0){\r\n                 Edge e = edges_of_mst.erase();\r\n-                if(g.getEdge(e.getStart(), e.getFinish()) == e.getWeight())writer.write()\r\n+                if(g.getEdge(e.getStart(), e.getFinish()) == e.getWeight())writer.write(e+)\r\n                 weight += e.getWeight();\r\n             }\r\n             writer.write(\"MST (Prim + Minheap) cost: \"+weight);\r\n             writer.close();\r\n"
+                },
+                {
+                    "date": 1685812040389,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -29,9 +29,9 @@\n             LL<Edge> edges_of_mst = help.MSTPrim(start);\r\n             double weight = 0;\r\n             while (edges_of_mst.size() != 0){\r\n                 Edge e = edges_of_mst.erase();\r\n-                if(g.getEdge(e.getStart(), e.getFinish()) == e.getWeight())writer.write(e+)\r\n+                if(g.getEdge(e.getStart(), e.getFinish()) == e.getWeight())writer.write(e+\"\\n\")\r\n                 weight += e.getWeight();\r\n             }\r\n             writer.write(\"MST (Prim + Minheap) cost: \"+weight);\r\n             writer.close();\r\n"
+                },
+                {
+                    "date": 1685812045494,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -29,9 +29,10 @@\n             LL<Edge> edges_of_mst = help.MSTPrim(start);\r\n             double weight = 0;\r\n             while (edges_of_mst.size() != 0){\r\n                 Edge e = edges_of_mst.erase();\r\n-                if(g.getEdge(e.getStart(), e.getFinish()) == e.getWeight())writer.write(e+\"\\n\")\r\n+                if(g.getEdge(e.getStart(), e.getFinish()) == e.getWeight())writer.write(e+\"\\n\");\r\n+                else\r\n                 weight += e.getWeight();\r\n             }\r\n             writer.write(\"MST (Prim + Minheap) cost: \"+weight);\r\n             writer.close();\r\n"
+                },
+                {
+                    "date": 1685812052626,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -30,9 +30,11 @@\n             double weight = 0;\r\n             while (edges_of_mst.size() != 0){\r\n                 Edge e = edges_of_mst.erase();\r\n                 if(g.getEdge(e.getStart(), e.getFinish()) == e.getWeight())writer.write(e+\"\\n\");\r\n-                else\r\n+                else{\r\n+                    \r\n+                }\r\n                 weight += e.getWeight();\r\n             }\r\n             writer.write(\"MST (Prim + Minheap) cost: \"+weight);\r\n             writer.close();\r\n"
+                },
+                {
+                    "date": 1685812060850,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,9 +31,9 @@\n             while (edges_of_mst.size() != 0){\r\n                 Edge e = edges_of_mst.erase();\r\n                 if(g.getEdge(e.getStart(), e.getFinish()) == e.getWeight())writer.write(e+\"\\n\");\r\n                 else{\r\n-                    \r\n+                    writer.write(e+\"\\n\");\r\n                 }\r\n                 weight += e.getWeight();\r\n             }\r\n             writer.write(\"MST (Prim + Minheap) cost: \"+weight);\r\n"
+                },
+                {
+                    "date": 1685812066296,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,9 +31,9 @@\n             while (edges_of_mst.size() != 0){\r\n                 Edge e = edges_of_mst.erase();\r\n                 if(g.getEdge(e.getStart(), e.getFinish()) == e.getWeight())writer.write(e+\"\\n\");\r\n                 else{\r\n-                    writer.write(e+\"\\n\");\r\n+                    writer.write(new Edge+\"\\n\");\r\n                 }\r\n                 weight += e.getWeight();\r\n             }\r\n             writer.write(\"MST (Prim + Minheap) cost: \"+weight);\r\n"
+                },
+                {
+                    "date": 1685812071421,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,9 +31,9 @@\n             while (edges_of_mst.size() != 0){\r\n                 Edge e = edges_of_mst.erase();\r\n                 if(g.getEdge(e.getStart(), e.getFinish()) == e.getWeight())writer.write(e+\"\\n\");\r\n                 else{\r\n-                    writer.write(new Edge()+\"\\n\");\r\n+                    writer.write(new Edge(g.)+\"\\n\");\r\n                 }\r\n                 weight += e.getWeight();\r\n             }\r\n             writer.write(\"MST (Prim + Minheap) cost: \"+weight);\r\n"
+                },
+                {
+                    "date": 1685819268579,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,47 @@\n+import java.io.*;\r\n+import MyListADT.*;\r\n+\r\n+public class GraphMST {\r\n+    private static final String INPUT_FILE = \"input.txt\";\r\n+    private static final String OUTPUT_FILE = \"output.txt\";\r\n+    public static void main(String[] args) {\r\n+        try(BufferedReader reader = new BufferedReader(new FileReader(INPUT_FILE))){\r\n+            BufferedWriter writer = new BufferedWriter(new FileWriter(OUTPUT_FILE));\r\n+\r\n+            String[]n_m = reader.readLine().split(\" \");\r\n+            int n = Integer.parseInt(n_m[0]);\r\n+            int m = Integer.parseInt(n_m[1]);\r\n+\r\n+            GraphMat g = new GraphMat(n);\r\n+            GraphMat help = uooubnew GraphMat(n);\r\n+            for (int i = 0; i < m;i++){\r\n+                String[] u_v = reader.readLine().split(\" \");\r\n+                int u = Integer.parseInt(u_v[0]);\r\n+                int v = Integer.parseInt(u_v[1]);\r\n+                Double w = Double.parseDouble(u_v[2]);\r\n+                g.setEdge(u,v,w);   \r\n+                help.setEdge(u, v, Math.min(g.getEdge(u, v),g.getEdge(v, u)));\r\n+                help.setEdge(v, u, Math.min(g.getEdge(v, u),g.getEdge(u, v)));\r\n+\r\n+            }\r\n+            System.out.println(g);\r\n+            System.out.println(help);\r\n+            int start = Integer.parseInt(reader.readLine());\r\n+            writer.write(\"MST (Prim + Minheap): \\n\");\r\n+            LL<Edge> edges_of_mst = help.MSTPrim(start);\r\n+            double weight = 0;\r\n+            while (edges_of_mst.size() != 0){\r\n+                Edge e = edges_of_mst.erase();\r\n+                if(g.getEdge(e.getStart(), e.getFinish()) == e.getWeight())writer.write(e+\"\\n\");\r\n+                else{\r\n+                    writer.write(e.getFinish()+\" -> \"+e.getStart()+\" (\"+g.getEdge(e.getFinish(), e.getStart())+\")\"+\"\\n\");\r\n+                }\r\n+                weight += e.getWeight();\r\n+            }\r\n+            writer.write(\"MST (Prim + Minheap) cost: \"+weight);\r\n+            writer.close();\r\n+        }catch(Exception e){\r\n+            e.printStackTrace();\r\n+        }\r\n+    }\r\n+}\r\n"
+                }
+            ],
+            "date": 1685809799342,
+            "name": "Commit-0",
+            "content": "import java.io.*;\r\nimport MyListADT.*;\r\n\r\npublic class GraphMST {\r\n    private static final String INPUT_FILE = \"input.txt\";\r\n    private static final String OUTPUT_FILE = \"output.txt\";\r\n    public static void main(String[] args) {\r\n        try(BufferedReader reader = new BufferedReader(new FileReader(INPUT_FILE))){\r\n            BufferedWriter writer = new BufferedWriter(new FileWriter(OUTPUT_FILE));\r\n\r\n            String[]n_m = reader.readLine().split(\" \");\r\n            int n = Integer.parseInt(n_m[0]);\r\n            int m = Integer.parseInt(n_m[1]);\r\n\r\n            GraphMat g = new GraphMat(n);\r\n            for (int i = 0; i < m;i++){\r\n                String[] u_v = reader.readLine().split(\" \");\r\n                int u = Integer.parseInt(u_v[0]);\r\n                int v = Integer.parseInt(u_v[1]);\r\n                Double w = Double.parseDouble(u_v[2]);\r\n                g.setEdge(u,v,w);   \r\n            }\r\n            System.out.println(g);\r\n            int start = Integer.parseInt(reader.readLine());\r\n            writer.write(\"MST (Prim + Minheap): \\n\");\r\n            LL<Edge> edges_of_mst = g.MSTPrim();\r\n            double weight = 0;\r\n            while (edges_of_mst.size() != 0){\r\n                Edge e = edges_of_mst.erase();\r\n                writer.write(e + \"\\n\");\r\n                weight += e.getWeight();\r\n            }\r\n            writer.write(\"MST (Prim + Minheap) cost: \"+weight);\r\n            writer.close();\r\n        }catch(Exception e){\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n}\r\n"
+        }
+    ]
+}

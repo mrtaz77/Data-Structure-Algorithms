@@ -1,7 +1,7 @@
 import MyListADT.LL;
 import Queue.QueueLL;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class GraphMat{
     private final double [][] adjMat;
@@ -11,6 +11,7 @@ public class GraphMat{
     public GraphMat(int n){
         vis = new int[n];
         adjMat = new double[n][n];
+        Arrays.stream(adjMat).forEach(a -> Arrays.fill(a, Double.POSITIVE_INFINITY));
         numEdge = 0;
     }
 
@@ -40,10 +41,12 @@ public class GraphMat{
         adjMat[from][to] = 0;
     }
 
-    public boolean isEdge(int from,int to){return adjMat[from][to] != 0;}
+    public boolean isEdge(int from,int to){return adjMat[from][to] != Double.POSITIVE_INFINITY;}
 
     public void setvis(int vertex,int val){vis[vertex] = val;}
     public int getvis(int vertex){return vis[vertex];}
+
+    public double getEdge(int from,int to){return adjMat[from][to];}
 
     @Override
     public String toString() {
@@ -190,6 +193,7 @@ public class GraphMat{
                 }
             }
         }
+        Arrays.fill(vis,0);
         return mst;
     }
 }
