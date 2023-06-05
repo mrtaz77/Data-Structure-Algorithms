@@ -1,4 +1,5 @@
 #include<bits/stdc++.h>
+#include"DisjointSet.h"
 using namespace std;
 
 double edgeWeight(vector<pair<int,double>> adj[],int u,int v){
@@ -78,6 +79,35 @@ vector<pair<int,pair<int,double>>> primMST(vector<pair<int,double>> adj[],int n)
 }   
 
 
+vector<pair<int,pair<int,double>>> kruskalMST(vector<pair<int,double>> adj[],int n,int e){
+    vector<pair<int,pair<int,double>>> mst;
+    DisjointSet set(n);
+
+    vector<pair<double, pair<int, int>>> edges(e);
+    for (int i = 0; i < n; i++) {
+        for (auto edge : adj[i]) {
+            int u = i;                     
+            int v = edge.first;           
+            double weight = edge.second;   
+            edges.push_back({weight, {u, v}});
+        }
+    }
+    
+    sort(edges.begin(),edges.end());
+
+    for(auto e:edges){
+        int u = e.second.first;
+        int v = e.second.second;
+        if (set.findUp(u) != set.findUp(v)) {
+            mst.push_back({u, {v, e.first}});
+            set.Union(u, v);
+        }
+    }
+
+    return mst;
+}
+
+
 int main()
 {
     freopen("input.txt", "r", stdin);
@@ -106,7 +136,7 @@ int main()
     vector<pair<int,pair<int,double>>> prim_mst = primMST(temp,n);
     double cost = 0.0;
 
-    cout<<"List of edges selected by Prim’s: {";
+    cout<<"List of edges selected by Prim's: {";
 
     
     for(int i = 0; i < prim_mst.size(); ++i){
@@ -114,6 +144,26 @@ int main()
         u = prim_mst[i].first;
         v = prim_mst[i].second.first;
         w = prim_mst[i].second.second;
+        cost += w;
+        if(edgeWeight(adj,u,v) == w)cout<<"("<<u<<","<<v<<")";
+        else cout<<"("<<v<<","<<u<<")"; 
+    }
+    cout<<"}\n";
+    cout<<"Cost: "<<cost<<endl;
+
+    cout<<"============================\n";
+
+    vector<pair<int,pair<int,double>>> kruskal_mst = kruskalMST(adj,n,e);
+    cost = 0.0;
+
+    cout<<"List of edges selected by Kruskal's: {";
+
+    
+    for(int i = 0; i < kruskal_mst.size(); ++i){
+        int u,v,w;
+        u = kruskal_mst[i].first;
+        v = kruskal_mst[i].second.first;
+        w = kruskal_mst[i].second.second;
         cost += w;
         if(edgeWeight(adj,u,v) == w)cout<<"("<<u<<","<<v<<")";
         else cout<<"("<<v<<","<<u<<")"; 
