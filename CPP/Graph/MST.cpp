@@ -129,7 +129,7 @@ int main()
         addEdge(temp,u,v,min_weight);
     }
     print(adj,n);
-    print(temp,n);
+    // print(temp,n);
 
     cout<<"============================\n";
 

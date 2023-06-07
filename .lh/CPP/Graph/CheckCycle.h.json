@@ -1,0 +1,26 @@
+{
+    "sourceFile": "CPP/Graph/CheckCycle.h",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1686152561467,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1686152578737,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,25 @@\n+#include <bits/stdc++.h>\r\n+#include\"GraphUtil.h\"\r\n+using namespace std;\r\n+bool cycleUtil(vector<pair<int,double>> adj[],int v,vector<bool>reVisit,vector<bool> visited){\r\n+    if(reVisit[v])return true;\r\n+    if(visited[v])return false;\r\n+\r\n+    reVisit[v] = true;\r\n+    visited[v] = true;\r\n+\r\n+    for(auto x:adj[v]){\r\n+        if(cycleUtil(adj,v,reVisit,visited))return true;\r\n+    }\r\n+    return reVisit[v] = false;\r\n+}\r\n+\r\n+bool cycle(vector<pair<int,double>> adj[],int n){\r\n+    vector<bool> reVisit(n,false);\r\n+    vector<bool> visited(n,false);\r\n+\r\n+    for(int i=0;i<n;i++){\r\n+        if(cycleUtil(adj,i,reVisit,visited))return true;\r\n+    }\r\n+    return false;\r\n+}\r\n"
+                },
+                {
+                    "date": 1686152724469,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,5 @@\n #include <bits/stdc++.h>\r\n-#include\"GraphUtil.h\"\r\n using namespace std;\r\n bool cycleUtil(vector<pair<int,double>> adj[],int v,vector<bool>reVisit,vector<bool> visited){\r\n     if(reVisit[v])return true;\r\n     if(visited[v])return false;\r\n@@ -22,26 +21,4 @@\n         if(cycleUtil(adj,i,reVisit,visited))return true;\r\n     }\r\n     return false;\r\n }\r\n-bool cycleUtil(vector<pair<int,double>> adj[],int v,vector<bool>reVisit,vector<bool> visited){\r\n-    if(reVisit[v])return true;\r\n-    if(visited[v])return false;\r\n-\r\n-    reVisit[v] = true;\r\n-    visited[v] = true;\r\n-\r\n-    for(auto x:adj[v]){\r\n-        if(cycleUtil(adj,v,reVisit,visited))return true;\r\n-    }\r\n-    return reVisit[v] = false;\r\n-}\r\n-\r\n-bool cycle(vector<pair<int,double>> adj[],int n){\r\n-    vector<bool> reVisit(n,false);\r\n-    vector<bool> visited(n,false);\r\n-\r\n-    for(int i=0;i<n;i++){\r\n-        if(cycleUtil(adj,i,reVisit,visited))return true;\r\n-    }\r\n-    return false;\r\n-}\r\n"
+                }
+            ],
+            "date": 1686152561467,
+            "name": "Commit-0",
+            "content": "bool cycleUtil(vector<pair<int,double>> adj[],int v,vector<bool>reVisit,vector<bool> visited){\r\n    if(reVisit[v])return true;\r\n    if(visited[v])return false;\r\n\r\n    reVisit[v] = true;\r\n    visited[v] = true;\r\n\r\n    for(auto x:adj[v]){\r\n        if(cycleUtil(adj,v,reVisit,visited))return true;\r\n    }\r\n    return reVisit[v] = false;\r\n}\r\n\r\nbool cycle(vector<pair<int,double>> adj[],int n){\r\n    vector<bool> reVisit(n,false);\r\n    vector<bool> visited(n,false);\r\n\r\n    for(int i=0;i<n;i++){\r\n        if(cycleUtil(adj,i,reVisit,visited))return true;\r\n    }\r\n    return false;\r\n}\r\n"
+        }
+    ]
+}
