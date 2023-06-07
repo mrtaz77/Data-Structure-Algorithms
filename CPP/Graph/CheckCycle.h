@@ -8,7 +8,7 @@ bool cycleUtil(vector<pair<int,double>> adj[],int v,vector<bool>reVisit,vector<b
     visited[v] = true;
 
     for(auto x:adj[v]){
-        if(cycleUtil(adj,v,reVisit,visited))return true;
+        if(cycleUtil(adj,x.first,reVisit,visited))return true;
     }
     return reVisit[v] = false;
 }

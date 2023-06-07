@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 #include"BFSDFS.h"
 #include"CheckCycle.h"
+#include"TopSort.h"
 using namespace std;
 int main(){
 
@@ -88,7 +89,18 @@ int main(){
         cout<<endl;
     }
 
-    cout<<"Cycle : "<<cycle(adj,n)<<endl;
+    cout<<"Cycle : "<<boolalpha<<cycle(adj,n)<<endl;
+
+    cout<<"Topological sort : "<<endl;
+
+    stack<int> sorted = topSort(adj,n);
+    cout<<"{";
+    while(!sorted.empty()){
+        cout<<sorted.top();
+        sorted.pop();
+        if(sorted.size() != 0)cout<<",";
+    }
+    cout<<"}";
 
     delete[]adj;
 }
