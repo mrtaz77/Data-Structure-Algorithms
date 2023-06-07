@@ -1,0 +1,15 @@
+Prim's Algorithm:
+Root node = 7
+Total weight = 207
+9 0
+3 1
+7 2
+10 3
+3 4
+2 5
+5 6
+6 8
+1 9
+5 10
+7 11
+8 12
