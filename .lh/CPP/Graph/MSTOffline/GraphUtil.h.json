@@ -1,0 +1,22 @@
+{
+    "sourceFile": "CPP/Graph/MSTOffline/GraphUtil.h",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1686140649916,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1686140656652,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n #include<bits/stdc++.h>\r\n #include\"DisjointSet.h\"\r\n-using namespace std;\r\n \r\n+\r\n double edgeWeight(vector<pair<int,double>> adj[],int u,int v){\r\n     for(auto x:adj[u]){\r\n         if(x.first==v){\r\n             return x.second;\r\n"
+                }
+            ],
+            "date": 1686140649916,
+            "name": "Commit-0",
+            "content": "#include<bits/stdc++.h>\r\n#include\"DisjointSet.h\"\r\nusing namespace std;\r\n\r\ndouble edgeWeight(vector<pair<int,double>> adj[],int u,int v){\r\n    for(auto x:adj[u]){\r\n        if(x.first==v){\r\n            return x.second;\r\n        }\r\n    }\r\n    return INFINITY;\t\r\n}\r\n\r\nvoid rmEdge(vector<pair<int,double>> adj[],int u,int v){\r\n    for(int i=0;i<adj[u].size();i++){\r\n        if(adj[u][i].first == v)adj[u].erase(adj[u].begin()+i);\r\n    }\r\n}\r\n\r\nvoid addEdge(vector<pair<int,double>> adj[],int u,int v,double w){\r\n    if(edgeWeight(adj,u,v) == INFINITY)adj[u].push_back({v,w});\r\n    else{\r\n        rmEdge(adj,u,v);\r\n        adj[u].push_back({v,w});\r\n    }\r\n}\r\n\r\nvoid print(vector<pair<int,double>> adj[],int n){\r\n    for(int i=0;i<n;i++){\r\n        cout<<i<<\" -> \";\r\n        for(auto x:adj[i]){\r\n            cout<<x.first<<\"(\"<<x.second<<\") \";\r\n        }\r\n        cout<<endl;\r\n    }\r\n}"
+        }
+    ]
+}

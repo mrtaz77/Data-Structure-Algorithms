@@ -102,13 +102,13 @@ vector<pair<int,int>> BFSAll(vector<pair<int,double>>adj[],int n){
     return bfsTree;
 }
 
-void DFSHelper(vector<pair<int,double>> adj[],vector<pair<int,int>> &dfsTree,vector<bool> &visited,vector<int> &parent,int v){
+void DFSUtil(vector<pair<int,double>> adj[],vector<pair<int,int>> &dfsTree,vector<bool> &visited,vector<int> &parent,int v){
     visited[v] = true;
     for(auto x : adj[v]){
         if(!visited[x.first]){
             dfsTree.push_back({v,x.first});
             parent[x.first] = v;
-            DFSHelper(adj,dfsTree,visited,parent,x.first);
+            DFSUtil(adj,dfsTree,visited,parent,x.first);
         }
     }
 }
@@ -118,7 +118,7 @@ vector<pair<int,int>> DFSTraversal(vector<pair<int,double>> adj[],int n,int star
     vector<bool>visited(n,false);
     vector<int>parent(n,-1);
 
-    DFSHelper(adj,dfsTree,visited,parent,start);
+    DFSUtil(adj,dfsTree,visited,parent,start);
 
     // for(int i=0;i<n;i++)cout<<parent[i]<<" ";
     // cout<<endl;
@@ -132,7 +132,7 @@ vector<pair<int,int>> DFSAll(vector<pair<int,double>> adj[],int n){
     vector<int>parent(n,-1);
 
     for(int i=0;i<n;i++){
-        if(!visited[i])DFSHelper(adj,dfsTree,visited,parent,i);
+        if(!visited[i])DFSUtil(adj,dfsTree,visited,parent,i);
     }
 
     // for(int i=0;i<n;i++)cout<<parent[i]<<" ";
@@ -140,6 +140,31 @@ vector<pair<int,int>> DFSAll(vector<pair<int,double>> adj[],int n){
 
     return dfsTree;
 }
+
+bool cycleUtil(vector<pair<int,double>> adj[],int v,vector<bool>reVisit,vector<bool> visited){
+    if(reVisit[v])return true;
+    if(visited[v])return false;
+
+    reVisit[v] = true;
+    visited[v] = true;
+
+    for(auto x:adj[v]){
+        if(cycleUtil(adj,v,reVisit,visited))return true;
+    }
+    return reVisit[v] = false;
+}
+
+bool cycle(vector<pair<int,double>> adj[],int n){
+    vector<bool> reVisit(n,false);
+    vector<bool> visited(n,false);
+
+    for(int i=0;i<n;i++){
+        if(cycleUtil(adj,i,reVisit,visited))return true;
+    }
+    return false;
+}
+
+
 int main(){
 
     freopen("input.txt", "r", stdin);
@@ -224,6 +249,8 @@ int main(){
         i--;
         cout<<endl;
     }
+
+    cout<<"Cycle : "<<cycle(adj,n)<<endl;
 
     delete[]adj;
 }

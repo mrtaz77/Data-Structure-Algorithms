@@ -1,0 +1,18 @@
+{
+    "sourceFile": "CPP/Graph/MSTOffline/in.txt",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1686141904850,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1686141904850,
+            "name": "Commit-0",
+            "content": "7 16\r\n0 2 12\r\n0 3 13\r\n0 4 5\r\n0 5 14\r\n0 6 6\r\n1 2 7\r\n1 3 9\r\n1 4 5\r\n1 5 7\r\n1 6 9\r\n2 4 11\r\n2 5 5\r\n2 6 8\r\n3 4 7\r\n3 5 13\r\n3 6 6\r\n"
+        }
+    ]
+}
