@@ -28,7 +28,6 @@ vector<pair<int,int>> BFStraversal(vector<pair<int,double>>adj[],int n,int start
     // cout<<endl;
     // for(int i=0;i<n;i++)cout<<dist[i]<<" ";
     // cout<<endl;
-
     return bfsTree;
 }
 

@@ -25,13 +25,14 @@ int main(){
     
     cout<<"BFS Tree : \n";
 
+
     for(int i=0;i<bfsTree.size();i++){
         int v = bfsTree[i].first;
         cout<<v<<" -> ";
-        while(bfsTree[i].first==v){
+        while(bfsTree[i].first==v && i<bfsTree.size()){
             cout<<bfsTree[i].second;
             i = i+1;
-            if(bfsTree[i].first == v)cout<<",";
+            if(bfsTree[i].first == v && i<bfsTree.size())cout<<",";
         }
         i--;
         cout<<endl;
@@ -45,10 +46,10 @@ int main(){
     for(int i=0;i<bfsAll.size();i++){
         int v = bfsAll[i].first;
         cout<<v<<" -> ";
-        while(bfsAll[i].first==v){
+        while(bfsAll[i].first==v && i<bfsAll.size()){
             cout<<bfsAll[i].second;
             i = i+1;
-            if(bfsAll[i].first == v)cout<<",";
+            if(bfsAll[i].first == v && i<bfsAll.size())cout<<",";
         }
         i--;
         cout<<endl;
@@ -61,10 +62,10 @@ int main(){
     for(int i=0;i<dfsTree.size();i++){
         int v = dfsTree[i].first;
         cout<<v<<" -> ";
-        while(dfsTree[i].first==v){
+        while(dfsTree[i].first==v && i<dfsTree.size()){
             cout<<dfsTree[i].second;
             i = i+1;
-            if(dfsTree[i].first == v)cout<<",";
+            if(dfsTree[i].first == v && i<dfsTree.size())cout<<",";
         }
         i--;
         cout<<endl;
@@ -78,10 +79,10 @@ int main(){
     for(int i=0;i<dfsAll.size();i++){
         int v = dfsAll[i].first;
         cout<<v<<" -> ";
-        while(dfsAll[i].first==v){
+        while(dfsAll[i].first==v && i<dfsAll.size()){
             cout<<dfsAll[i].second;
             i = i+1;
-            if(dfsAll[i].first == v)cout<<",";
+            if(dfsAll[i].first == v && i<dfsAll.size())cout<<",";
         }
         i--;
         cout<<endl;
