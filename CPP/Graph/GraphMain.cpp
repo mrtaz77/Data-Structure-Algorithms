@@ -8,7 +8,6 @@ int main(){
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 
-
     int n,m,start;
     cin>>n>>m;
     vector<pair<int,double>> *adj = new vector<pair<int,double>>[n];
@@ -93,13 +92,16 @@ int main(){
 
     cout<<"Topological sort : "<<endl;
 
-    vector<int> sorted = topSort(adj,n);
-    cout<<"{";
-    for(int i=0;i<sorted.size();i++){
-        cout<<sorted[i];
-        if(i != sorted.size()-1)cout<<",";
+    if(cycle(adj,n))cout<<"-1"<<endl;
+    else{
+        vector<int> sorted = topSort(adj,n);
+        cout<<"{";
+        for(int i=0;i<sorted.size();i++){
+            cout<<sorted[i];
+            if(i != sorted.size()-1)cout<<",";
+        }
+        cout<<"}";
     }
-    cout<<"}";
 
     delete[]adj;
 }

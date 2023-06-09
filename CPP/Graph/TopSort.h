@@ -13,13 +13,7 @@ vector<int> topSort(vector<pair<int,double>>adj[],int n){
     stack<int> s;
     vector<bool> visited(n,false);
     for(int i=0;i<n;i++){
-        if(!visited[i]){
-            visited[i] = true;
-            for(auto x : adj[i]){
-                if(!visited[x.first])topSortUtil(adj,s,visited,x.first);
-            }
-            s.push(i);
-        }
+        if(!visited[i])topSortUtil(adj,s,visited,i);
     }
     vector<int> sort;
     while(!s.empty()){
