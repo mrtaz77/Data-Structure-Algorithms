@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 28,
+            "activePatchIndex": 30,
             "patches": [
                 {
                     "date": 1686144939783,
@@ -120,6 +120,14 @@
                 {
                     "date": 1686149056738,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -72,8 +72,9 @@\n     cin >> start;\r\n     //print(adj,n);\r\n     if(start<0 || start>=n){\r\n         cout<<\"Invalid root node.Using 0 as default.\"<<endl;\r\n+        start=0;\r\n     }\r\n \r\n     vector<pair<int,pair<int,double>>> prim_mst = primMST(adj,n,start);\r\n \r\n"
+                },
+                {
+                    "date": 1686283381124,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -68,9 +68,9 @@\n         cin >> u >> v >> w;\r\n         addEdge(adj,u,v,w);\r\n         addEdge(adj,v,u,w);\r\n     }\r\n-    cin >> start;\r\n+    \r\n     //print(adj,n);\r\n     if(start<0 || start>=n){\r\n         cout<<\"Invalid root node.Using 0 as default.\"<<endl;\r\n         start=0;\r\n"
+                },
+                {
+                    "date": 1686283387659,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -68,9 +68,9 @@\n         cin >> u >> v >> w;\r\n         addEdge(adj,u,v,w);\r\n         addEdge(adj,v,u,w);\r\n     }\r\n-    \r\n+    start = 0;\r\n     //print(adj,n);\r\n     if(start<0 || start>=n){\r\n         cout<<\"Invalid root node.Using 0 as default.\"<<endl;\r\n         start=0;\r\n"
                 }
             ],
             "date": 1686144939783,
