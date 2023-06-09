@@ -100,7 +100,19 @@ int main(){
             cout<<sorted[i];
             if(i != sorted.size()-1)cout<<",";
         }
-        cout<<"}";
+        cout<<"}\n";
+    }
+
+    cout<<"Kahn Topological sort : "<<endl;
+    vector<int> sortedKahn = kahnTopSort(adj,n);
+    if(sortedKahn.size() < n)cout<<"-1"<<endl;
+    else{
+        cout<<"{";
+        for(int i=0;i<sortedKahn.size();i++){
+            cout<<sortedKahn[i];
+            if(i != sortedKahn.size()-1)cout<<",";
+        }
+        cout<<"}\n";
     }
 
     delete[]adj;
