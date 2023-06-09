@@ -34,3 +34,5 @@ All topological sortings are :
 {1,0,3,2,5,6,4}
 {1,0,3,2,6,4,5}
 {1,0,3,2,6,5,4}
+Longest distances from 0 :
+0 -inf 12 13 23 26 20 

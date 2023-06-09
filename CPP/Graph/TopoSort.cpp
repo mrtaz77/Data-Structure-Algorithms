@@ -16,6 +16,7 @@ int main(){
         cin>>u>>v>>w;
         addEdge(adj,u,v,w);
     }
+    cin>>start;
     print(adj,n);
 
     cout<<"Topological sort : "<<endl;
@@ -44,6 +45,11 @@ int main(){
     }
     cout<<"All topological sortings are : \n";
     allTopSort(adj,n);
+
+    cout<<"Longest distances from "<<start<<" :\n";
+    vector<double> dis = longestPathsDAG(adj,n,start);
+    for(int i=0;i<dis.size();i++)cout<<dis[i]<<" ";
+    cout<<endl;  
 
     delete[]adj;
 }

@@ -90,3 +90,17 @@ void allTopSort(vector<pair<int,double>> adj[],int n){
     }
     allTopSortUtil(adj,n,indeg,result,vis);
 }
+
+vector<double> longestPathsDAG(vector<pair<int,double>> adj[],int n,int s){
+    vector<double> distance(n,-INFINITY);
+    distance[s] = 0;
+
+    vector<int> sorted = topSort(adj,n);
+
+    for(auto u:sorted){
+        for(auto v:adj[u]){
+            if(distance[v.first] < distance[u] + v.second) distance[v.first] = distance[u] + v.second; 
+        }
+    }
+    return distance;
+}
