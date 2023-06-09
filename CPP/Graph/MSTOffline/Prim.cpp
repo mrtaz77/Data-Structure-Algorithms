@@ -69,7 +69,7 @@ int main()
         addEdge(adj,u,v,w);
         addEdge(adj,v,u,w);
     }
-    cin >> start;
+    start = 0;
     //print(adj,n);
     if(start<0 || start>=n){
         cout<<"Invalid root node.Using 0 as default."<<endl;
