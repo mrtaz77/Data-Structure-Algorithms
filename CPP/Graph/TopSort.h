@@ -51,3 +51,42 @@ vector<int> kahnTopSort(vector<pair<int,double>>adj[],int n){
     }
     return sorted;
 }
+
+void allTopSortUtil(vector<pair<int,double>> adj[],int n,vector<int> &indeg,vector<int> &result,vector<bool> &vis){
+
+    for(int i=0;i<n;i++){
+        if(indeg[i] == 0 && !vis[i]){
+            for(auto x:adj[i])indeg[x.first]--;
+            
+            result.push_back(i);
+            vis[i] = true;
+            allTopSortUtil(adj,n,indeg,result,vis);
+
+            vis[i] = false;
+            result.pop_back();
+            for(auto x:adj[i])indeg[x.first]++;
+        }
+    }
+
+    if(result.size() == n){
+        cout<<"{";
+        for(int i=0;i<result.size();i++){
+            cout<<result[i];
+            if(i != result.size()-1)cout<<",";
+        }
+        cout<<"}\n";
+    }
+}
+
+void allTopSort(vector<pair<int,double>> adj[],int n){
+    vector<bool> vis(n,false);
+    vector<int> result;
+    vector<int> indeg(n,0);
+
+    for(int i=0;i<n;i++){
+        for(auto x:adj[i]){
+            indeg[x.first]++;
+        }
+    }
+    allTopSortUtil(adj,n,indeg,result,vis);
+}

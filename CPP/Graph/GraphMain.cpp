@@ -90,30 +90,5 @@ int main(){
 
     cout<<"Cycle : "<<boolalpha<<cycle(adj,n)<<endl;
 
-    cout<<"Topological sort : "<<endl;
-
-    if(cycle(adj,n))cout<<"-1"<<endl;
-    else{
-        vector<int> sorted = topSort(adj,n);
-        cout<<"{";
-        for(int i=0;i<sorted.size();i++){
-            cout<<sorted[i];
-            if(i != sorted.size()-1)cout<<",";
-        }
-        cout<<"}\n";
-    }
-
-    cout<<"Kahn Topological sort : "<<endl;
-    vector<int> sortedKahn = kahnTopSort(adj,n);
-    if(sortedKahn.size() < n)cout<<"-1"<<endl;
-    else{
-        cout<<"{";
-        for(int i=0;i<sortedKahn.size();i++){
-            cout<<sortedKahn[i];
-            if(i != sortedKahn.size()-1)cout<<",";
-        }
-        cout<<"}\n";
-    }
-
-    delete[]adj;
+    delete []adj;
 }
