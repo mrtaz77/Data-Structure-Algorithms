@@ -9,7 +9,7 @@ void topSortUtil(vector<pair<int,double>>adj[],stack<int> &s,vector<bool> &visit
     s.push(v);
 }
 
-stack<int> topSort(vector<pair<int,double>>adj[],int n){
+vector<int> topSort(vector<pair<int,double>>adj[],int n){
     stack<int> s;
     vector<bool> visited(n,false);
     for(int i=0;i<n;i++){
@@ -21,5 +21,10 @@ stack<int> topSort(vector<pair<int,double>>adj[],int n){
             s.push(i);
         }
     }
-    return s;
+    vector<int> sort;
+    while(!s.empty()){
+        sort.push_back(s.top());
+        s.pop();
+    }
+    return sort;
 }

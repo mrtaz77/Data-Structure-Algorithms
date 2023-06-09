@@ -1,15 +1,10 @@
-0 -> 1(2) 2(1) 
-1 -> 
-2 -> 1(3) 
-3 -> 1(2) 2(2) 
-BFS Tree : 
-0 -> 1,2
-BFS all :
-0 -> 1,2
-DFS Tree : 
-0 -> 1,2
-DFS all :
-0 -> 1,2
-Cycle : false
-Topological sort : 
-{3,0,2,1}
+0 -> 2(2) 2(1) 2(1) 
+1 -> 3(2) 
+2 -> 0(2) 0(1) 0(1) 
+3 -> 1(2) 
+============================
+List of edges selected by Prim's: {(1,3)}
+Cost: 2
+============================
+List of edges selected by Kruskal's: {(0,2)(1,3)}
+Cost: 3

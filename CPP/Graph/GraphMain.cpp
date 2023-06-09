@@ -93,12 +93,11 @@ int main(){
 
     cout<<"Topological sort : "<<endl;
 
-    stack<int> sorted = topSort(adj,n);
+    vector<int> sorted = topSort(adj,n);
     cout<<"{";
-    while(!sorted.empty()){
-        cout<<sorted.top();
-        sorted.pop();
-        if(sorted.size() != 0)cout<<",";
+    for(int i=0;i<sorted.size();i++){
+        cout<<sorted[i];
+        if(i != sorted.size()-1)cout<<",";
     }
     cout<<"}";
 

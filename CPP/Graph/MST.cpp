@@ -3,12 +3,13 @@
 using namespace std;
 
 double edgeWeight(vector<pair<int,double>> adj[],int u,int v){
+    double weight = INFINITY;
     for(auto x:adj[u]){
-        if(x.first==v){
-            return x.second;
+        if(x.first==v && x.second < weight){
+            weight = x.second;
         }
     }
-    return INFINITY;	
+    return weight;	
 }
 
 void rmEdge(vector<pair<int,double>> adj[],int u,int v){
@@ -17,13 +18,7 @@ void rmEdge(vector<pair<int,double>> adj[],int u,int v){
     }
 }
 
-void addEdge(vector<pair<int,double>> adj[],int u,int v,double w){
-    if(edgeWeight(adj,u,v) == INFINITY)adj[u].push_back({v,w});
-    else{
-        rmEdge(adj,u,v);
-        adj[u].push_back({v,w});
-    }
-}
+void addEdge(vector<pair<int,double>> adj[],int u,int v,double w){adj[u].push_back({v,w});}
 
 void print(vector<pair<int,double>> adj[],int n){
     for(int i=0;i<n;i++){
@@ -35,11 +30,9 @@ void print(vector<pair<int,double>> adj[],int n){
     }
 }
 
-vector<pair<int,pair<int,double>>> primMST(vector<pair<int,double>> adj[],int n){
+vector<pair<int,pair<int,double>>> primMST(vector<pair<int,double>> adj[],int n,int start){
     vector<pair<int,pair<int,double>>> mst;
     priority_queue<pair<double,int>,vector<pair<double,int>>,greater<pair<double,int>>> minHeap;
-
-    int start = 0;
 
     vector<double> keys(n,INFINITY);
     vector<int> parents(n,-1);
@@ -76,8 +69,7 @@ vector<pair<int,pair<int,double>>> primMST(vector<pair<int,double>> adj[],int n)
         }
     }
     return mst;
-}   
-
+}
 
 vector<pair<int,pair<int,double>>> kruskalMST(vector<pair<int,double>> adj[],int n,int e){
     vector<pair<int,pair<int,double>>> mst;
@@ -113,27 +105,26 @@ int main()
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
 
-    int n,e;
-    cin >> n >> e;
+    int n,m;
+    cin >> n >> m;
 
     vector<pair<int,double>> *adj = new vector<pair<int,double>>[n];
-    vector<pair<int,double>> *temp = new vector<pair<int,double>>[n];
 
-    for (int i = 0; i < e; ++i){
+    for (int i = 0; i < m; ++i){
         int u,v;
         double w;
         cin >> u >> v >> w;
         addEdge(adj,u,v,w);
-        double min_weight = (w < edgeWeight(adj,v,u)) ? w : edgeWeight(adj,v,u);
-        addEdge(temp,v,u,min_weight);
-        addEdge(temp,u,v,min_weight);
+        addEdge(adj,v,u,w);
     }
+    int start;
+    cin >> start;
     print(adj,n);
     // print(temp,n);
 
     cout<<"============================\n";
 
-    vector<pair<int,pair<int,double>>> prim_mst = primMST(temp,n);
+    vector<pair<int,pair<int,double>>> prim_mst = primMST(adj,n,start);
     double cost = 0.0;
 
     cout<<"List of edges selected by Prim's: {";
@@ -153,7 +144,7 @@ int main()
 
     cout<<"============================\n";
 
-    vector<pair<int,pair<int,double>>> kruskal_mst = kruskalMST(adj,n,e);
+    vector<pair<int,pair<int,double>>> kruskal_mst = kruskalMST(adj,n,m);
     cost = 0.0;
 
     cout<<"List of edges selected by Kruskal's: {";
@@ -172,5 +163,4 @@ int main()
     cout<<"Cost: "<<cost<<endl;
 
     delete[] adj;
-    delete[] temp;
 }
