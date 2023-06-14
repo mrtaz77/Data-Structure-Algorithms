@@ -87,5 +87,5 @@ int main(){
         }
         else cout<<"Root : "<<start<<endl;
     }
-    // for(int i=0;i<n;i++)cout<<dis[i]<<" ";
+    for(int i=0;i<n;i++)cout<<dis[i]<<" ";
 }
