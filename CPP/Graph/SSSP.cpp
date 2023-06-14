@@ -6,32 +6,30 @@ vector<vector<pair<int,double>>> ssspTree(vector<pair<int,double>> adj[],int n,i
     vector<vector<pair<int,double>>> sssp(n);
     priority_queue<pair<double,int>,vector<pair<double,int>>,greater<pair<double,int>>> minHeap;
 
-    vector<double> keys(n,INFINITY);
+    vector<double> distance(n,INFINITY);
     vector<int> parents(n,-1);
-    vector<int> vis(n,0);
 
-    keys[start] = 0;
+    distance[start] = 0;
     minHeap.push({0,start});
+    
 
     while(!minHeap.empty()){
         int u = minHeap.top().second;
+        double dis = minHeap.top().first;
         minHeap.pop();
 
-        if(!vis[u]){
-            vis[u] = 1;
+        for(auto x:adj[u]){
+            int v = x.first;
+            double weight = x.second;
 
-            for(auto x:adj[u]){
-                int v = x.first;
-                double weight = x.second;
-
-                if(!vis[v] && keys[v] > weight){
-                    parents[v] = u;
-                    keys[v] = weight;
-                    minHeap.push({keys[v],v});
-                }
+            if(weight + distance[u] < distance[v]){
+                parents[v] = u;
+                distance[v] = weight + distance[u];
+                minHeap.push({distance[v],v});
             }
         }
     }
+    // for(int i=0;i<distance.size();i++)cout << distance[i] << 
     stack<int> s;
     for(int i=0;i<n;i++){
         if(parents[i] != -1){
@@ -48,6 +46,8 @@ vector<vector<pair<int,double>>> ssspTree(vector<pair<int,double>> adj[],int n,i
             }
         }
     }
+    for(int i=0;i<distance.size();i++)cout <<distance[i] <<" ";
+    cout << endl;
     return sssp;
 }
 
@@ -68,11 +68,10 @@ int main(){
         double w;
         cin >> u >> v >> w;
         addEdge(adj,u,v,w);
-        addEdge(adj,v,u,w);
     }
-    int start;
-    cin >> start;
-    print(adj,n);
+    int start ;
+    cin >> start ;
+    // print(adj,n);
 
     auto sssp = ssspTree(adj,n,start);
     vector<double> dis(n,0);
@@ -88,6 +87,5 @@ int main(){
         }
         else cout<<"Root : "<<start<<endl;
     }
-
-    for(int i=0;i<n;i++)cout<<dis[i]<<" ";
+    // for(int i=0;i<n;i++)cout<<dis[i]<<" ";
 }
