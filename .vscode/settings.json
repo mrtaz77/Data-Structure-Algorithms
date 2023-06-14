@@ -4,6 +4,8 @@
         "iostream": "cpp",
         "utility": "cpp",
         "queue": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "valarray": "cpp",
+        "stack": "cpp"
     }
 }

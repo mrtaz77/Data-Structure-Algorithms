@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 4,
+            "activePatchIndex": 6,
             "patches": [
                 {
                     "date": 1685889972574,
@@ -24,6 +24,14 @@
                 {
                     "date": 1685909973682,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,7 +2,8 @@\n     \"files.associations\": {\r\n         \"vector\": \"cpp\",\r\n         \"iostream\": \"cpp\",\r\n         \"utility\": \"cpp\",\r\n-        \"queue\": \"cpp\"\r\n+        \"queue\": \"cpp\",\r\n+        \"algorithm\": \"cpp\"\r\n     }\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1686548096726,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,7 +3,8 @@\n         \"vector\": \"cpp\",\r\n         \"iostream\": \"cpp\",\r\n         \"utility\": \"cpp\",\r\n         \"queue\": \"cpp\",\r\n-        \"algorithm\": \"cpp\"\r\n+        \"algorithm\": \"cpp\",\r\n+        \"valarray\": \"cpp\"\r\n     }\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1686554943219,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,7 +4,8 @@\n         \"iostream\": \"cpp\",\r\n         \"utility\": \"cpp\",\r\n         \"queue\": \"cpp\",\r\n         \"algorithm\": \"cpp\",\r\n-        \"valarray\": \"cpp\"\r\n+        \"valarray\": \"cpp\",\r\n+        \"stack\": \"cpp\"\r\n     }\r\n }\n\\ No newline at end of file\n"
                 }
             ],
             "date": 1685889972574,

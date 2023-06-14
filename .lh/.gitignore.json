@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 4,
+            "activePatchIndex": 5,
             "patches": [
                 {
                     "date": 1686144311349,
@@ -24,6 +24,10 @@
                 {
                     "date": 1686318641810,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,5 @@\n+#input and output\r\n *.txt\r\n \r\n # Compiled class file\r\n *.class\r\n"
+                },
+                {
+                    "date": 1686650833372,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,6 @@\n-#input and output\r\n-*.txt\r\n \r\n+\r\n # Compiled class file\r\n *.class\r\n *.exe\r\n \r\n"
                 }
             ],
             "date": 1686144311349,

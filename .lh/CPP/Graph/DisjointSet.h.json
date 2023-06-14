@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 27,
+            "activePatchIndex": 28,
             "patches": [
                 {
                     "date": 1685903256623,
@@ -116,6 +116,10 @@
                 {
                     "date": 1685903526600,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,28 @@\n+#include<bits/stdc++.h>\r\n+using namespace std;\r\n+class DisjointSet{\r\n+    vector <int> rank,parent;\r\n+public:\r\n+    DisjointSet(int n){\r\n+        rank.resize(n+1,0);\r\n+        parent.resize(n);\r\n+        for(int i=0;i<=n;i++)parent[i]=i;\r\n+    }\r\n+\r\n+    int findUp(int node){\r\n+        if(parent[node]!=node)parent[node]=findUp(parent[node]);\r\n+        return parent[node];\r\n+    }\r\n+\r\n+    void Union(int x,int y){\r\n+        x=findUp(x);\r\n+        y=findUp(y);\r\n+        if(x!=y){\r\n+            if(rank[x]>rank[y])parent[y]=x;\r\n+            else{\r\n+                parent[x]=y;\r\n+                if(rank[x]==rank[y])rank[y]++;\r\n+            }\r\n+        }\r\n+    }\r\n+};\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1686543627774,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n     vector <int> rank,parent;\r\n public:\r\n     DisjointSet(int n){\r\n         rank.resize(n+1,0);\r\n-        parent.resize(n);\r\n+        parent.resize(n+1);\r\n         for(int i=0;i<=n;i++)parent[i]=i;\r\n     }\r\n \r\n     int findUp(int node){\r\n@@ -24,23 +24,5 @@\n                 if(rank[x]==rank[y])rank[y]++;\r\n             }\r\n         }\r\n     }\r\n-};\n-#include<bits/stdc++.h>\r\n-using namespace std;\r\n-class DisjointSet{\r\n-    vector <int> rank,parent;\r\n-public:\r\n-    DisjointSet(int n){\r\n-        rank.resize(n+1,0);\r\n-        parent.resize(n);\r\n-        for(int i=0;i<=n;i++)parent[i]=i;\r\n-    }\r\n-\r\n-    int findUp(int node){\r\n-        if(parent[node]!=node)parent[node]=findUp(parent[node]);\r\n-        return parent[node];\r\n-    }\r\n-\r\n-    void Union(int x,int y){\r\n };\n\\ No newline at end of file\n"
                 }
             ],
             "date": 1685903256623,
