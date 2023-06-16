@@ -33,8 +33,8 @@ int delEdgeCount(vector<pair<int,double>> adj[],int n,int e){
             int u = edges[i].second.first;
             int v = edges[i].second.second;
             if (male.findUp(u) != male.findUp(v) && female.findUp(u) != female.findUp(v)) {
-                male.Union(u,v);
-                female.Union(u,v);
+                male.UnionByRank(u,v);
+                female.UnionByRank(u,v);
                 maleV++;
                 femaleV++;
             }
@@ -51,7 +51,7 @@ int delEdgeCount(vector<pair<int,double>> adj[],int n,int e){
             int u = edges[i].second.first;
             int v = edges[i].second.second;
             if (male.findUp(u) != male.findUp(v)) {
-                male.Union(u, v);
+                male.UnionByRank(u, v);
                 maleV++;
             }
             else count++;
@@ -62,7 +62,7 @@ int delEdgeCount(vector<pair<int,double>> adj[],int n,int e){
         int u = edges[i].second.first;
         int v = edges[i].second.second;
         if (female.findUp(u) != female.findUp(v)) {
-            female.Union(u, v);
+            female.UnionByRank(u, v);
             femaleV++;
         }
         else count++;

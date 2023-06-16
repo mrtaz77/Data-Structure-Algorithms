@@ -74,7 +74,6 @@ vector<int> pathUtil(vector<pair<int,double>> sssp,int n,int s,int d){
 
 
 
-
 int main(){
 
     freopen("input.txt", "r", stdin);

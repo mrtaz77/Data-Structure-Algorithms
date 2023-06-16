@@ -24,6 +24,8 @@ int connectedComponents(const vector<pair<int,double>> adj[],int n){
     return num;
 }
 
+
+
 int main(){
 
     freopen("input.txt", "r", stdin);

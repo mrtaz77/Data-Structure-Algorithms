@@ -66,7 +66,7 @@ vector<pair<int,pair<int,double>>> kruskalMST(vector<pair<int,double>> adj[],int
         int v = e.second.second;
         if (set.findUp(u) != set.findUp(v)) {
             mst.push_back({u, {v, e.first}});
-            set.Union(u, v);
+            set.UnionByRank(u, v);
         }
     }
 

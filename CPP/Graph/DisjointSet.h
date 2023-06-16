@@ -14,7 +14,7 @@ public:
         return parent[node];
     }
 
-    void Union(int x,int y){
+    void UnionByRank(int x,int y){
         x=findUp(x);
         y=findUp(y);
         if(x!=y){
