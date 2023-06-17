@@ -7,6 +7,7 @@ bool compare(const pair<double, pair<int, int>>& a, const pair<double, pair<int,
     return a.first > b.first;  // Compare in descending order
 }
 
+
 int delEdgeCount(vector<pair<int,double>> adj[],int n,int e){
     vector<pair<int,pair<int,double>>> mst;
     DisjointSet male(n),female(n);
@@ -84,7 +85,6 @@ int main(){
         double w;
         cin>>u>>v>>w;
         addEdge(adj,u-1,v-1,w);
-        addEdge(adj,v-1,u-1,w);
     }
     print(adj,n);
     cout<<delEdgeCount(adj,n,m)<<endl;
