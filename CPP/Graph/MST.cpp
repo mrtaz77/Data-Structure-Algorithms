@@ -39,17 +39,17 @@ vector<pair<int,pair<int,double>>> primMST(vector<pair<int,double>> adj[],int n,
 
     for(int i=0;i<n;i++){
         if(parents[i] != -1){
-            mst.push_back({parents[i],{i,edgeWeight(adj,parents[i],i)}});
+            mst.push_back({parents[i],{i,keys[i]}});
         }
     }
     return mst;
 }
 
-vector<pair<int,pair<int,double>>> kruskalMST(vector<pair<int,double>> adj[],int n,int e){
+vector<pair<int,pair<int,double>>> kruskalMST(vector<pair<int,double>> adj[],int n){
     vector<pair<int,pair<int,double>>> mst;
     DisjointSet set(n);
 
-    vector<pair<double, pair<int, int>>> edges(e);
+    vector<pair<double, pair<int, int>>> edges;
     for (int i = 0; i < n; i++) {
         for (auto edge : adj[i]) {
             int u = i;                     
@@ -69,7 +69,6 @@ vector<pair<int,pair<int,double>>> kruskalMST(vector<pair<int,double>> adj[],int
             set.UnionByRank(u, v);
         }
     }
-
     return mst;
 }
 
@@ -118,7 +117,7 @@ int main()
 
     cout<<"============================\n";
 
-    vector<pair<int,pair<int,double>>> kruskal_mst = kruskalMST(adj,n,m);
+    vector<pair<int,pair<int,double>>> kruskal_mst = kruskalMST(adj,n);
     cost = 0.0;
 
     cout<<"List of edges selected by Kruskal's: {";
