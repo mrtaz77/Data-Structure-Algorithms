@@ -1,6 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
-
+// Vjudge problem Single Source Shortest Path (Negative Edges) 
+// Find only those negative weight cycles which are reachable from starting node
+// No need to consider other negative weight cycles
 void addEdge(vector<pair<int,double>> adj[],int u,int v,double w=1.0){adj[u].push_back({v,w});}
 
 vector<pair<int,double>>bellFord(vector<pair<int,double>> adj[],int n,int start){
