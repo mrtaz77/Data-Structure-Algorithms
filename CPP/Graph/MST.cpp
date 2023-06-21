@@ -3,7 +3,6 @@
 #include"DisjointSet.h"
 using namespace std;
 
-
 vector<pair<int,pair<int,double>>> primMST(vector<pair<int,double>> adj[],int n,int start){
     vector<pair<int,pair<int,double>>> mst;
     priority_queue<pair<double,int>,vector<pair<double,int>>,greater<pair<double,int>>> minHeap;

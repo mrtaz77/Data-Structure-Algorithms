@@ -3,11 +3,11 @@
 #include"GraphUtil.h"
 using namespace std;
 
-vector<pair<int,pair<int,double>>> kruskalMST(vector<pair<int,double>> adj[],int n,int e){
+vector<pair<int,pair<int,double>>> kruskalMST(vector<pair<int,double>> adj[],int n){
     vector<pair<int,pair<int,double>>> mst;
     DisjointSet set(n);
 
-    vector<pair<double, pair<int, int>>> edges(e);
+    vector<pair<double, pair<int, int>>> edges;
     for (int i = 0; i < n; i++) {
         for (auto edge : adj[i])edges.push_back({edge.second,{i, edge.first}});
     }
@@ -26,9 +26,9 @@ vector<pair<int,pair<int,double>>> kruskalMST(vector<pair<int,double>> adj[],int
     return mst;
 }
 
-double mstCost(vector<pair<int,double>> adj[],int n,int e){
+double mstCost(vector<pair<int,double>> adj[],int n){
     double cost = 0.0;
-    vector<pair<int,pair<int,double>>> kruskal_mst = kruskalMST(adj,n,e);
+    vector<pair<int,pair<int,double>>> kruskal_mst = kruskalMST(adj,n);
 
     for(int i = 0; i < kruskal_mst.size(); ++i)cost+=kruskal_mst[i].second.second;
     return cost;
@@ -53,9 +53,9 @@ int main()
     }
     //print(adj,n);
 
-    vector<pair<int,pair<int,double>>> kruskal_mst = kruskalMST(adj,n,m);
+    vector<pair<int,pair<int,double>>> kruskal_mst = kruskalMST(adj,n);
 
-    cout<<"Kruskal's Algorithm:\nTotal weight = "<<mstCost(adj,n,m)<<endl;
+    cout<<"Kruskal's Algorithm:\nTotal weight = "<<mstCost(adj,n)<<endl;
 
     
     for(int i = 0; i < kruskal_mst.size(); ++i){
