@@ -1,12 +1,13 @@
-#include<bits/stdc++.h>
-using namespace std;
 // Vjudge problem Single Source Shortest Path (Negative Edges) 
 // Find only those negative weight cycles which are reachable from starting node
 // No need to consider other negative weight cycles
-void addEdge(vector<pair<int,double>> adj[],int u,int v,double w=1.0){adj[u].push_back({v,w});}
 
-vector<pair<int,double>>bellFord(vector<pair<int,double>> adj[],int n,int start){
-    vector<pair<int,double>> bf(n,{-1,INFINITY});
+#include<bits/stdc++.h>
+using namespace std;
+void addEdge(vector<pair<int,long long>> adj[],int u,int v,long long w=1){adj[u].push_back({v,w});}
+
+vector<pair<int,long long>>bellFord(vector<pair<int,long long>> adj[],int n,int start){
+    vector<pair<int,long long>> bf(n,{-1,INT_MAX});
     bf[start].second = 0.0;
     for(int i=0;i<n-1;i++){
         for(int j=0;j<n;j++){
@@ -30,7 +31,7 @@ vector<pair<int,double>>bellFord(vector<pair<int,double>> adj[],int n,int start)
 }
 
 
-void print(vector<pair<int,double>> adj[],int n){
+void print(vector<pair<int,long long>> adj[],int n){
     for(int i=0;i<n;i++){
         cout<<i<<" -> ";
         for(auto x:adj[i]){
@@ -47,10 +48,10 @@ int main(){
     
     int n,m,s;
     cin >> n >> m>>s;
-    vector<pair<int,double>> *adjBF = new vector<pair<int,double>>[n];
+    vector<pair<int,long long>> *adjBF = new vector<pair<int,long long>>[n];
     for (int i = 0; i < m; ++i){
         int u,v;
-        double w;
+        long long w;
         cin >> u >> v >> w;
         addEdge(adjBF,u,v,w);
     }
@@ -62,7 +63,7 @@ int main(){
     }
     else{
         for(int i=0;i<n;i++){
-            if(bf[i].second == INFINITY) cout<<"INF"<<endl;
+            if(bf[i].second == INT_MAX) cout<<"INF"<<endl;
             else cout<<bf[i].second<<endl;
         }
     }
