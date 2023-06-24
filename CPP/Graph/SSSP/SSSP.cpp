@@ -121,5 +121,3 @@ int main(){
     cout<<endl;
 }
 
-// CSES High Score
-// CSES Cycle Finding
