@@ -34,8 +34,8 @@ long long int solve(vector<pair<int,long long int>> adj[],int n){
 }
 
 int main(){
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
+    // freopen("input.txt", "r", stdin);
+    // freopen("output.txt", "w", stdout);
 
     int n,m;
     cin >> n >> m;

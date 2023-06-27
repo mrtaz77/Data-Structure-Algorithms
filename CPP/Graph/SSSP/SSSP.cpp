@@ -17,6 +17,9 @@ vector<pair<int,long long>> bellFord(vector<pair<int,long long>> adj[],int n,int
             }
         }
     }
+    //if cycle present and reachable from source,checking 
+    //whether a path exists between src and des including the neg cycle
+    //if exists then the following iterations makes the distances -INF
     if(k != -1){
         bf[k].second = -1e17;
         for(int i=0;i<n-1;i++){
@@ -115,7 +118,7 @@ int main(){
     if(djk[d].second == 1e17)cout<<"INF\n";
     else{
         cout<<djk[d].second<<endl;
-        vector<int> pathDjk = pathUtil(bf,n,s,d);
+        vector<int> pathDjk = pathUtil(djk,n,s,d);
         for(int i = 0; i < pathDjk.size(); ++i){
             cout<<pathDjk[i];
             if(i!=pathDjk.size()-1)cout<<"->";
@@ -124,4 +127,3 @@ int main(){
     }
 }
 
-// CSES High Score
