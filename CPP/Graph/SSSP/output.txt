@@ -1,6 +1,2 @@
-Bellman Ford Algorithm:
-7
-0->1->5
-Dijkstra Algorithm:
-7
-0->1->5
+There are no anomalies
+Best exchange rate: 0
