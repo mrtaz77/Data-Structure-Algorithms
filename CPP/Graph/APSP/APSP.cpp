@@ -43,11 +43,10 @@ vector<vector<long double>> matProduct(vector<pair<int,long double>> adj[],int n
     }
 
     for(int m=1;m<n-1;m*=2){
-        vector<vector<long double>> dis2M = disM;
         for(int i=0;i<n;i++){
             for(int j=0;j<n;j++){
                 for(int k=0;k<n;k++){
-                    if(!(dis2M[i][k] == 1e17 || dis2M[k][j] == 1e17))disM[i][j] = min(disM[i][j],dis2M[i][k]+dis2M[k][j]); 
+                    if(!(disM[i][k] == 1e17 || disM[k][j] == 1e17))disM[i][j] = min(disM[i][j],disM[i][k]+disM[k][j]); 
                 }
             }
         }
@@ -76,21 +75,6 @@ int main(){
         addEdge(adj,u-1,v-1,w);
     }
 
-    cout<<"Floyd Warshall Algorithm:"<<endl;
-    auto disFW = floydWarshall(adj,n);
-    if(disFW.size() == 0)cout<<"Negative Weight Cycle Present"<<endl;
-    else{
-        cout<<"Shortest distance matrix"<<endl;
-        for(int i = 0; i < n; ++i){
-            for(int j = 0; j < n; ++j){
-                if(disFW[i][j] == 1e17)cout<<"INF ";
-                else cout<< disFW[i][j]<<" ";
-            }
-            cout<<endl;
-        }
-    }
-    cout<<endl;
-
     cout<<"Matrix Multiplication:"<<endl;
     auto disMat = matProduct(adj,n);
     if(disMat.size() == 0)cout<<"Negative Weight Cycle Present"<<endl;
@@ -100,6 +84,21 @@ int main(){
             for(int j = 0; j < n; ++j){
                 if(disMat[i][j] == 1e17)cout<<"INF ";
                 else cout<< disMat[i][j]<<" ";
+            }
+            cout<<endl;
+        }
+    }
+    cout<<endl;
+
+    cout<<"Floyd Warshall Algorithm:"<<endl;
+    auto disFW = floydWarshall(adj,n);
+    if(disFW.size() == 0)cout<<"Negative Weight Cycle Present"<<endl;
+    else{
+        cout<<"Shortest distance matrix"<<endl;
+        for(int i = 0; i < n; ++i){
+            for(int j = 0; j < n; ++j){
+                if(disFW[i][j] == 1e17)cout<<"INF ";
+                else cout<< disFW[i][j]<<" ";
             }
             cout<<endl;
         }
