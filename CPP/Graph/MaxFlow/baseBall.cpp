@@ -31,6 +31,9 @@ vector<int> augmentUtil(vector<pair<int,long long>> adj[],int s,int t){
         }while(pre != s);
         reverse(path.begin(),path.end());
     }
+    // cout<<"Augmented paths"<<endl;
+    // for(int i = 0; i < path.size();i++){cout<<path[i];if(i!=path.size()-1)cout<<" -> ";}
+    // cout<<endl;
     return path;
 }
 
@@ -86,10 +89,20 @@ vector<int> certificateOfElimination(vector<pair<int,long long>> adj[],int n,int
     }
 
     auto minCut = minCutUtil(adj,s,t);  
+
+    // cout<<"Min Cut"<<endl;
+    // for(int i = 0; i < minCut.size();i++){cout<<minCut[i];if(i!=minCut.size()-1)cout<<" -> ";}
+    // cout<<endl;
+
     vector<int> cert;
     for(int j = 0; j < minCut.size(); j++){
-        if(j != s && j < n)cert.push_back(j);
+        if(minCut[j] != s && minCut[j] < n)cert.push_back(minCut[j]);
     }
+
+    // cout<<"Certificate"<<endl;
+    // for(int i = 0; i < cert.size();i++){cout<<cert[i];if(i!=cert.size()-1)cout<<" -> ";}
+    // cout<<endl;
+
     return cert;
 }
 
@@ -109,88 +122,84 @@ int main(){
     
     for(int i=0;i<n;i++){
         cin >> teams[i] >> w[i] >> l[i] >> r[i] ;
-        cout << teams[i] << " " << w[i] << " " << l[i] << " " << r[i] << " ";
         for(int j=0;j<n;j++){
-            int temp;
-            cin >> temp ;
-            cout<<temp<<" ";
-            fixture[i][j] = temp;
+            cin >> fixture[i][j];
         }
-        cout<<endl;
     }
 
 
     // main driver loop
-    // for(int i=0;i<n;i++){
-    //     bool eliminated = false;
-    //     // maxFlow Graph
+    for(int i=0;i<n;i++){
+        bool eliminated = false;
+        // maxFlow Graph
 
-    //     int nodes = 2 + (n-1) + ((n-1)*(n-2))/2;
-    //     vector<pair<int,long long>> *adj = new vector<pair<int,long long>>[nodes];
+        int nodes = 2 + (n-1) + ((n-1)*(n-2))/2;
+        vector<pair<int,long long>> *adj = new vector<pair<int,long long>>[nodes];
 
-    //     // other teams to destination
-    //     for(int j=0;j<n;j++){
-    //         if(j == i)continue;
-    //         int chance = w[i]+r[i]-w[j];
-    //         if(chance >= 0)addEdge(adj,nodes-1,chance);
-    //         else{
-    //             eliminated = true;
-    //             cout<<teams[i]<<" is eliminated."<<endl;
-    //             cout<<"The can win at most "<<w[i]<<" + "+r[i]<<" = "<<w[i]+r[i]<<" games."<<endl;
-    //             cout<<teams[j]<<" has won a total of "<<w[j]<<" games."<<endl;
-    //             cout<<"They play each other 0 times."<<endl;
-    //             cout<<"So on average, each of the teams in this group wins "<<w[j]<<"/1 = "<<w[j]<<" games."<<endl;  
-    //             break;  
-    //         }
-    //     }
-    //     if(eliminated)continue;
+        // other teams to destination
+        for(int j=0;j<n;j++){
+            if(j == i)continue;
+            int chance = w[i]+r[i]-w[j];
+            if(chance >= 0)addEdge(adj,j,nodes-1,chance);
+            else{
+                eliminated = true;
+                cout<<teams[i]<<" is eliminated."<<endl;
+                cout<<"They can win at most "<<w[i]<<" + "<<r[i]<<" = "<<w[i]+r[i]<<" games."<<endl;
+                cout<<teams[j]<<" has won a total of "<<w[j]<<" games."<<endl;
+                cout<<"They play each other 0 times."<<endl;
+                cout<<"So on average, each of the teams in this group wins "<<w[j]<<"/1 = "<<w[j]<<" games.\n"<<endl;  
+                break;  
+            }
+        }
+        if(eliminated)continue;
 
-    //     int k = n+1;
-    //     for(int u=0;u<n-1;u++){
-    //         if(u == i)continue;
-    //         for(int v=u+1;v<n;v++){
-    //             if(v == i)continue;
-    //             // matches to teams
-    //             adj[k].push_back({u,1e17});
-    //             adj[k].push_back({v,1e17});
-    //             // source to teams
-    //             adj[i].push_back({k,fixture[u][v]});
-    //             k++;
-    //         }
-    //     }
+        int k = n;
+        for(int u=0;u<n-1;u++){
+            if(u == i)continue;
+            for(int v=u+1;v<n;v++){
+                if(v == i)continue;
+                // matches to teams
+                adj[k].push_back({u,1e17});
+                adj[k].push_back({v,1e17});
+                // source to teams
+                adj[i].push_back({k,fixture[u][v]});
+                k++;
+            }
+        }
+        // print(adj,n);
 
-    //     auto cert = certificateOfElimination(adj,n,i,nodes-1);
-    //     if(cert.size() == 0)cout<<teams[i]<<" is not eliminated."<<endl;
-    //     else {
-    //         eliminated = true;
-    //         cout<<teams[i]<<" is eliminated."<<endl;
-    //         cout<<"The can win at most "<<w[i]<<" + "+r[i]<<" = "<<w[i]+r[i]<<" games."<<endl;
-    //         if(cert.size() == 1){
-    //             cout<<teams[cert[0]]<<" has won a total of "<<w[cert[0]]<<" games."<<endl;
-    //             cout<<"They play each other 0 times."<<endl;
-    //             cout<<"So on average, each of the teams in this group wins "<<w[cert[0]]<<"/1 = "<<w[cert[0]]<<" games."<<endl;  
-    //         }
-    //         else{
-    //             for(int c=0; c<cert.size(); c++){
-    //                 cout<<teams[cert[c]];
-    //                 if(c==cert.size()-2)cout<<" and ";
-    //                 else if(c!=cert.size()-1)cout<<", ";
-    //             }
-    //             cout<<"have won a total of ";
-    //             long long sum = 0;
-    //             for(int c=0; c<cert.size(); c++)sum+=w[cert[c]];
-    //             cout<<sum<<" games.\n";
-    //             cout<<"They play each other ";
-    //             long long tot_games = 0;
-    //             for(int c1=0; c1<cert.size()-1; c1++){
-    //                 for(int c2=c1+1; c2<cert.size(); c2++){
-    //                     tot_games+=fixture[cert[c1]][cert[c2]];
-    //                 }
-    //             }
-    //             cout<<tot_games<<" times.\n";
-    //             cout<<"So on average, each of the teams wins "<<tot_games<<"/"<<cert.size()<<" = "<<tot_games/cert.size()<<endl;	
-    //         }
-    //         cout<<endl;
-    //     }
-    // }
+        auto cert = certificateOfElimination(adj,n,i,nodes-1);
+        if(cert.size() == 0)cout<<teams[i]<<" is not eliminated.\n"<<endl;
+        else {
+            eliminated = true;
+            cout<<teams[i]<<" is eliminated."<<endl;
+            cout<<"They can win at most "<<w[i]<<" + "<<r[i]<<" = "<<w[i]+r[i]<<" games."<<endl;
+            if(cert.size() == 1){
+                cout<<teams[cert[0]]<<" has won a total of "<<w[cert[0]]<<" games."<<endl;
+                cout<<"They play each other 0 times."<<endl;
+                cout<<"So on average, each of the teams in this group wins "<<w[cert[0]]<<"/1 = "<<w[cert[0]]<<" games.\n"<<endl;  
+            }
+            else{
+                for(int c=0; c<cert.size(); c++){
+                    cout<<teams[cert[c]];
+                    if(c==cert.size()-2)cout<<" and ";
+                    else if(c!=cert.size()-1)cout<<", ";
+                }
+                cout<<" have won a total of ";
+                long long sum = 0;
+                for(int c=0; c<cert.size(); c++)sum+=w[cert[c]];
+                cout<<sum<<" games.\n";
+                cout<<"They play each other ";
+                long long tot_games = 0;
+                for(int c1=0; c1<cert.size()-1; c1++){
+                    for(int c2=c1+1; c2<cert.size(); c2++){
+                        tot_games+=fixture[cert[c1]][cert[c2]];
+                    }
+                }
+                cout<<tot_games<<" times.\n";
+                cout<<"So on average, each of the teams wins "<<tot_games+sum<<"/"<<cert.size()<<" = "<<double(tot_games+sum)/double(cert.size())<<" games."<<endl;	
+            }
+            cout<<endl;
+        }
+    }
 }
