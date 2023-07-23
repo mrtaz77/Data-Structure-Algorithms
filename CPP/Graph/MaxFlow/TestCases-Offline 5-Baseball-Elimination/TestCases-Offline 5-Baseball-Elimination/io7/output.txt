@@ -1,0 +1,100 @@
+turkey is not eliminated.
+
+guineafowl is not eliminated.
+
+quail is not eliminated.
+
+grouse is not eliminated.
+
+ptarmigan is not eliminated.
+
+snowcock is not eliminated.
+
+partridge is not eliminated.
+
+pheasant is not eliminated.
+
+chicken is not eliminated.
+
+peacock is not eliminated.
+
+dove is not eliminated.
+
+goose is not eliminated.
+
+duck is not eliminated.
+
+swan is not eliminated.
+
+mallard is not eliminated.
+
+pintail is not eliminated.
+
+eider is not eliminated.
+
+penguin is not eliminated.
+
+loon is not eliminated.
+
+albatross is not eliminated.
+
+flamingo is not eliminated.
+
+stork is not eliminated.
+
+ibis is not eliminated.
+
+spoonbill is not eliminated.
+
+heronegret is not eliminated.
+
+booby is not eliminated.
+
+cormorant is not eliminated.
+
+vulture is not eliminated.
+
+falcon is not eliminated.
+
+condor is not eliminated.
+
+osprey is not eliminated.
+
+buzzard is not eliminated.
+
+kite is not eliminated.
+
+eagle is not eliminated.
+
+hawk is not eliminated.
+
+harrier is not eliminated.
+
+sparrow is not eliminated.
+
+rail is not eliminated.
+
+coot is not eliminated.
+
+crane is not eliminated.
+
+sandpiper is not eliminated.
+
+gull is not eliminated.
+
+tern is not eliminated.
+
+razorbill is not eliminated.
+
+parrot is not eliminated.
+
+cockatoo is not eliminated.
+
+macaw is not eliminated.
+
+cuckoo is not eliminated.
+
+roadrunner is not eliminated.
+
+owl is not eliminated.
+

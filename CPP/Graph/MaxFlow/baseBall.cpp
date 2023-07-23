@@ -79,10 +79,12 @@ vector<int> certificateOfElimination(vector<pair<int,long long>> adj[],int n,int
         for(int i = 0; i < augPath.size()-1; i++){
             int u = augPath[i];
             int v = augPath[i+1];
-            int cap = edgeWeight(adj,u,v);
+            long long cap = edgeWeight(adj,u,v);
+            long long prevFlow = edgeWeight(adj,v,u);
             rmEdge(adj,u,v);
             addEdge(adj,u,v,cap-bottleNeck);
-            addEdge(adj,v,u,bottleNeck);
+            rmEdge(adj,v,u);
+            addEdge(adj,v,u,prevFlow+bottleNeck);
         }
         maxFlow += bottleNeck;
         augPath = augmentUtil(adj,s,t);
@@ -140,7 +142,10 @@ int main(){
         for(int j=0;j<n;j++){
             if(j == i)continue;
             int chance = w[i]+r[i]-w[j];
-            if(chance >= 0)addEdge(adj,j,nodes-1,chance);
+            if(chance >= 0){
+                addEdge(adj,j,nodes-1,chance);
+                addEdge(adj,nodes-1,j,0);
+            }
             else{
                 eliminated = true;
                 cout<<teams[i]<<" is eliminated."<<endl;
@@ -159,18 +164,22 @@ int main(){
             for(int v=u+1;v<n;v++){
                 if(v == i)continue;
                 // matches to teams
-                adj[k].push_back({u,1e17});
-                adj[k].push_back({v,1e17});
+                addEdge(adj,k,u,1e17);
+                addEdge(adj,k,v,1e17);
+                addEdge(adj,u,k,0);
+                addEdge(adj,v,k,0);
                 // source to teams
-                adj[i].push_back({k,fixture[u][v]});
+                addEdge(adj,i,k,fixture[u][v]);
+                addEdge(adj,k,i,0);
                 k++;
             }
         }
-        // print(adj,n);
 
+        // print(adj,nodes);
         auto cert = certificateOfElimination(adj,n,i,nodes-1);
-        if(cert.size() == 0)cout<<teams[i]<<" is not eliminated.\n"<<endl;
-        else {
+        // print(adj,nodes);
+
+        if(cert.size() > 0){
             eliminated = true;
             cout<<teams[i]<<" is eliminated."<<endl;
             cout<<"They can win at most "<<w[i]<<" + "<<r[i]<<" = "<<w[i]+r[i]<<" games."<<endl;

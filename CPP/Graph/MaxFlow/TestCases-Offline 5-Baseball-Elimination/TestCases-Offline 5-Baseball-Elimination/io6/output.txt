@@ -1,0 +1,192 @@
+Team0 is not eliminated.
+
+Team1 is not eliminated.
+
+Team2 is not eliminated.
+
+Team3 is not eliminated.
+
+Team4 is not eliminated.
+
+Team5 is eliminated.
+They can win at most 18 + 15 = 33 games.
+Team1 has won a total of 35 games.
+They play each other 0 times.
+So on average, each of the teams in this group wins 35/1 = 35 games.
+
+Team6 is eliminated.
+They can win at most 32 + 6 = 38 games.
+Team10, Team20 and Team22 have won a total of 112 games.
+They play each other 3 times.
+So on average, each of the teams wins 115/3 = 38.3333 games.
+
+Team7 is eliminated.
+They can win at most 23 + 13 = 36 games.
+Team10 has won a total of 38 games.
+They play each other 0 times.
+So on average, each of the teams in this group wins 38/1 = 38 games.
+
+Team8 is not eliminated.
+
+Team9 is eliminated.
+They can win at most 26 + 11 = 37 games.
+Team10 has won a total of 38 games.
+They play each other 0 times.
+So on average, each of the teams in this group wins 38/1 = 38 games.
+
+Team10 is not eliminated.
+
+Team11 is not eliminated.
+
+Team12 is not eliminated.
+
+Team13 is not eliminated.
+
+Team14 is eliminated.
+They can win at most 25 + 12 = 37 games.
+Team10 has won a total of 38 games.
+They play each other 0 times.
+So on average, each of the teams in this group wins 38/1 = 38 games.
+
+Team15 is not eliminated.
+
+Team16 is not eliminated.
+
+Team17 is not eliminated.
+
+Team18 is not eliminated.
+
+Team19 is eliminated.
+They can win at most 27 + 9 = 36 games.
+Team10 has won a total of 38 games.
+They play each other 0 times.
+So on average, each of the teams in this group wins 38/1 = 38 games.
+
+Team20 is not eliminated.
+
+Team21 is eliminated.
+They can win at most 28 + 10 = 38 games.
+Team10, Team20 and Team22 have won a total of 112 games.
+They play each other 3 times.
+So on average, each of the teams wins 115/3 = 38.3333 games.
+
+Team22 is not eliminated.
+
+Team23 is not eliminated.
+
+Team24 is not eliminated.
+
+Team25 is not eliminated.
+
+Team26 is eliminated.
+They can win at most 26 + 11 = 37 games.
+Team10 has won a total of 38 games.
+They play each other 0 times.
+So on average, each of the teams in this group wins 38/1 = 38 games.
+
+Team27 is eliminated.
+They can win at most 24 + 12 = 36 games.
+Team10 has won a total of 38 games.
+They play each other 0 times.
+So on average, each of the teams in this group wins 38/1 = 38 games.
+
+Team28 is not eliminated.
+
+Team29 is not eliminated.
+
+Team30 is eliminated.
+They can win at most 29 + 9 = 38 games.
+Team10, Team20 and Team22 have won a total of 112 games.
+They play each other 3 times.
+So on average, each of the teams wins 115/3 = 38.3333 games.
+
+Team31 is not eliminated.
+
+Team32 is not eliminated.
+
+Team33 is not eliminated.
+
+Team34 is not eliminated.
+
+Team35 is not eliminated.
+
+Team36 is eliminated.
+They can win at most 28 + 9 = 37 games.
+Team10 has won a total of 38 games.
+They play each other 0 times.
+So on average, each of the teams in this group wins 38/1 = 38 games.
+
+Team37 is not eliminated.
+
+Team38 is not eliminated.
+
+Team39 is eliminated.
+They can win at most 26 + 12 = 38 games.
+Team10, Team20 and Team22 have won a total of 112 games.
+They play each other 3 times.
+So on average, each of the teams wins 115/3 = 38.3333 games.
+
+Team40 is eliminated.
+They can win at most 26 + 11 = 37 games.
+Team10 has won a total of 38 games.
+They play each other 0 times.
+So on average, each of the teams in this group wins 38/1 = 38 games.
+
+Team41 is not eliminated.
+
+Team42 is not eliminated.
+
+Team43 is not eliminated.
+
+Team44 is not eliminated.
+
+Team45 is not eliminated.
+
+Team46 is eliminated.
+They can win at most 24 + 13 = 37 games.
+Team10 has won a total of 38 games.
+They play each other 0 times.
+So on average, each of the teams in this group wins 38/1 = 38 games.
+
+Team47 is not eliminated.
+
+Team48 is not eliminated.
+
+Team49 is not eliminated.
+
+Team50 is not eliminated.
+
+Team51 is eliminated.
+They can win at most 29 + 9 = 38 games.
+Team10, Team20 and Team22 have won a total of 112 games.
+They play each other 3 times.
+So on average, each of the teams wins 115/3 = 38.3333 games.
+
+Team52 is not eliminated.
+
+Team53 is eliminated.
+They can win at most 25 + 10 = 35 games.
+Team10 has won a total of 38 games.
+They play each other 0 times.
+So on average, each of the teams in this group wins 38/1 = 38 games.
+
+Team54 is not eliminated.
+
+Team55 is not eliminated.
+
+Team56 is eliminated.
+They can win at most 28 + 9 = 37 games.
+Team10 has won a total of 38 games.
+They play each other 0 times.
+So on average, each of the teams in this group wins 38/1 = 38 games.
+
+Team57 is eliminated.
+They can win at most 27 + 10 = 37 games.
+Team10 has won a total of 38 games.
+They play each other 0 times.
+So on average, each of the teams in this group wins 38/1 = 38 games.
+
+Team58 is not eliminated.
+
+Team59 is not eliminated.
+
