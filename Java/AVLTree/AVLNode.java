@@ -1,4 +1,4 @@
-package Java.AVLTree;
+
 
 public class AVLNode<E extends Comparable<? super E>> {
     private E element;

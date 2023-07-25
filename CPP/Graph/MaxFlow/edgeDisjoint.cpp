@@ -87,8 +87,16 @@ void maxFlow(vector<pair<int,long long>> adj[],int n,int s,int t){
             rmEdge(adj,v,u);
             if(prevFlow == 1e17)prevFlow = 0;
             addEdge(adj,v,u,prevFlow+bottleNeck);
-            rmEdge(net,u,v);
-            addEdge(net,u,v,prevFlow+bottleNeck);
+            if(edgeWeight(net,v,u)==1e17){
+                rmEdge(net,u,v);
+                addEdge(net,u,v,prevFlow+bottleNeck);
+            }
+            else{
+                long long netPrev = edgeWeight(net,v,u);
+                rmEdge(net,v,u);
+                addEdge(net,v,u,netPrev-bottleNeck);
+            }
+            
             // print(net,n);
         }
         // cout<<"================================\n";
