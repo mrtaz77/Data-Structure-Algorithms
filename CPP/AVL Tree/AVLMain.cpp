@@ -1,7 +1,6 @@
 #include<bits/stdc++.h>
 #include"AVLNode.h"
 #include"AVL.h"
-#include<chrono>
 using namespace std;
 
 int main(){
@@ -31,8 +30,9 @@ int main(){
     long double delete_time = 0.0;
     long double search_time = 0.0;
     long double traversal_time = 0.0;
+
+    clock_t start, end;
     
-    chrono::time_point<chrono::high_resolution_clock> start,end;
 
     string line;
     while(getline(in, line)){
@@ -46,33 +46,33 @@ int main(){
         switch(cmd) {
             case 'I':
                 iss>>input;
-                start = chrono::high_resolution_clock::now();
+                start = clock();
                 root = tree->insert(root,input);
-                end = chrono::high_resolution_clock::now();
-                insert_time += (end - start) / chrono::milliseconds(1);
+                end = clock();
+                insert_time += (long double)(end - start) / CLOCKS_PER_SEC * 1000.0;
                 out<<tree->show(root)<<"\n";
                 break;
             case 'D':
                 iss>>input;
-                start = chrono::high_resolution_clock::now();
+                start = clock();
                 root = tree->erase(root,input);
-                end = chrono::high_resolution_clock::now();
-                delete_time += (end - start) / chrono::milliseconds(1);
+                end = clock();
+                delete_time += (long double)(end - start) / CLOCKS_PER_SEC * 1000.0;
                 out<<tree->show(root)<<"\n";
                 break;
             case 'T':
-                start = chrono::high_resolution_clock::now();
+                start = clock();
                 inOrd = tree->inOrder(root);
-                end = chrono::high_resolution_clock::now();
-                traversal_time += (end - start) / chrono::milliseconds(1);
+                end = clock();
+                traversal_time += (long double)(end - start) / CLOCKS_PER_SEC * 1000.0;
                 out<<inOrd<<"\n";
                 break;
             case 'F':
                 iss>>input;
-                start = chrono::high_resolution_clock::now();
+                start = clock();
                 bool found = tree->find(root,input);
-                end = chrono::high_resolution_clock::now();
-                search_time += (end - start) / chrono::milliseconds(1);
+                end = clock();
+                search_time += (long double)(end - start) / CLOCKS_PER_SEC * 1000.0;
                 if(found)out<<"found\n";
                 else out<<"not found\n";
                 break;
