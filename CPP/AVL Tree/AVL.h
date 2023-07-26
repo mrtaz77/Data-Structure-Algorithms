@@ -1,23 +1,74 @@
 #include<bits/stdc++.h>
-#include"AVLNode.h"
+using namespace std;
 template<typename E>
 class AVL{
     AVLNode<E>* root;
-    int nodeCount;
+
+    AVLNode<E>* rightRot(AVLNode<E>* root){
+        AVLNode<E>* prevRoot = root;
+        AVLNode<E>* newRoot = root->left();
+        AVLNode<E>* newRootRight = root->left()->right();
+
+        prevRoot = prevRoot->setLeft(newRootRight);
+        newRoot = newRoot->setRight(prevRoot);
+
+        root = newRoot;
+        return root;
+    }
+
+    AVLNode<E>* leftRot(AVLNode<E>* root){
+        AVLNode<E>* prevRoot = root;
+        AVLNode<E>* newRoot = root->right();
+        AVLNode<E>* newRootLeft = root->right()->left();
+
+        prevRoot = prevRoot->setRight(newRootLeft);
+        newRoot = newRoot->setLeft(prevRoot);
+
+        root = newRoot;
+        return root;
+    }
+
+    AVLNode<E>* leftRightRot(AVLNode<E>* root){
+        root = root->setLeft(leftRot(root->left()));
+        return rightRot(root);
+    }
+
+    AVLNode<E>* rightLeftRot(AVLNode<E>* root){
+        root = root->setRight(rightRot(root->right()));
+        return leftRot(root);
+    }
+
+    AVLNode<E>* balance(AVLNode<E>* root){
+        if(root == NULL)return NULL;
+        int leftH = maxHeight(root->left());
+        int rightH = maxHeight(root->right());
+        if(abs(leftH - rightH) <= 1)return root;
+        else{
+            if(leftH > rightH + 1){
+                int leftLeftH = maxHeight(root->left()->left());
+                int leftRightH = maxHeight(root->left()->right());
+                if(leftLeftH > leftRightH)return rightRot(root);
+                else return leftRightRot(root);
+            }
+            else{
+                int rightLeftH = maxHeight(root->right()->left());
+                int rightRightH = maxHeight(root->right()->right());
+                if(rightRightH > rightLeftH)return leftRot(root);
+                else return rightLeftRot(root);
+            }
+        }
+    }
 public:
     AVL(){
-        root = new AVLNode<>();
-        nodeCount = 0;
+        root = NULL;
     }
 
     AVL(E element){
-        root = new AVLNode<>(element);
-        nodeCount = 1;
+        root = new AVLNode<E>(element);
     }
 
     ~AVL(){
         delete root;
-        nodeCount = 0;
     }
 
     bool isLeaf(AVLNode<E>* root,E element){
@@ -42,21 +93,24 @@ public:
     string inOrder(AVLNode<E>* root){
         if(root == NULL)return "";
         else{
-            return inOrder(root->left())+root->element()+" "+inOrder(root->right());
+            string str = to_string(root->element());
+            return inOrder(root->left())+str+" "+inOrder(root->right());
         }
     }
 
     string preOrder(AVLNode<E>* root){
         if(root == NULL)return "";
         else{
-            return root->element()+" "+preOrder(root->left())+preOrder(root->right());
+            string str = to_string(root->element());
+            return str+" "+preOrder(root->left())+preOrder(root->right());
         }
     }
 
-    string postOrder(AVLNode<E>* root){4
+    string postOrder(AVLNode<E>* root){
         if(root == NULL)return "";
         else{
-            return postOrder(root->left())+postOrder(root->right())+root->element()+" ";
+            string str = to_string(root->element());
+            return postOrder(root->left())+postOrder(root->right())+str+" ";
         }
     }
 
@@ -68,7 +122,8 @@ public:
             q.push(root);
             while(!q.isEmpty()){
                 AVLNode<E> *temp = q.pop();
-                level += temp->element()+" ";
+                string str = to_string(temp->element());
+                level += str+" ";
                 if(temp->left() != NULL)q.add(temp->left());
                 if(temp->right() != NULL)q.add(temp->right());
             }
@@ -76,38 +131,48 @@ public:
         }
     }
 
-    friend ostream& operator<<(ostream& os,const AVLNode<E>* root){
-        if(root==NULL)os<<"";
+    string show(AVLNode<E>* root){
+        if(root==NULL)return "";
         else{
-            if(root->left() != NULL || root->right() != NULL)os<<root->element()<<"("<<root->left()<<","<<root->right()<<")";
-            else os<<root->element();
+            string str = to_string(root->element());
+            if(root->left() != NULL || root->right() != NULL){
+                return str+"("+show(root->left())+","+show(root->right())+")";
+            }
+            else return str;
         }
-        return os;
     }
 
     AVLNode<E>* insert(AVLNode<E>* root,E element){
-        if(root==NULL)return new AVLNode<E>(root);
-        else if(root->element() <= element)root->setRight(insert(root->right(),element));
-        else root->setLeft(insert(root->left,element));
+        if(root==NULL)return new AVLNode<E>(element);
+        else if(root->element() <= element)root = root->setRight(insert(root->right(),element));
+        else root = root->setLeft(insert(root->left(),element));
+        root = balance(root);
         return root;    
     }
 
-    AVLNode<E>* delete(AVLNode<E>* root,E element){
+    AVLNode<E>* erase(AVLNode<E>* root,E element){
         if(root==NULL)return NULL;
-        else if(root->element() < element)root.setRight(delete(root->right(),element));
-        else if(root->element() > element)root.setLeft(delete(root->left(),element));
+        else if(root->element() < element)root = root->setRight(erase(root->right(),element));
+        else if(root->element() > element)root = root->setLeft(erase(root->left(),element));
         else{
-            if(root->left() == NULL && root->right() == NULL)return NULL;
-            else if(root->right() == NULL)return root->left();
-            else if(root->left() == NULL)return root->right();
+            if(root->left() == NULL && root->right() == NULL)root = NULL;
+            else if(root->right() == NULL)root = root->left();
+            else if(root->left() == NULL)root = root->right();
             else{
                 AVLNode<E>* inSuccessor = root->right();    
                 while(inSuccessor->left() != NULL)inSuccessor = inSuccessor->left();
-                root.setElement(inSuccessor->element);
-                root.setRight(delete(root->right(),inSuccessor->element));
+                root = root->setElement(inSuccessor->element());
+                root = root->setRight(erase(root->right(),inSuccessor->element()));
             }
         }
+        root = balance(root);
         return root;
     }
 
+    bool find(AVLNode<E>* root,E element) {
+        if(root == NULL)return false;
+        else if(root->element() == element)return true;
+        else if(root->element() < element)return find(root->right(),element);
+        else find(root->left(),element);
+    }
 };

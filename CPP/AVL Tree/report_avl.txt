@@ -1,0 +1,6 @@
+operation time(ms)
+insert 47
+delete 18
+search 7
+trav 0
+total 72

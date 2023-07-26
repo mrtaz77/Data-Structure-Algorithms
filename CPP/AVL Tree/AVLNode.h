@@ -3,46 +3,53 @@ using namespace std;
 
 template<typename E>
 class AVLNode{
-    E element;
-    AVLNode* left;
-    AVLNode* right;
+    E it;
+    AVLNode<E>* lc;
+    AVLNode<E>* rc;
 public:
     AVLNode(){
-        left = right = NULL;
+        lc = rc = NULL;
     }
 
-    AVLNode(E element,AVLNode<E>* left=NULL,AVLNode<E>* right=NULL){
-        this->element = element;
-        this->left = left;
-        this->right = right;
+    AVLNode(E it,AVLNode<E>* lc=NULL,AVLNode<E>* rc=NULL){
+        this->it = it;
+        this->lc = lc;
+        this->rc = rc;
     }
 
     AVLNode(const AVLNode<E>& avl){
-        element = avl->element;
-        left = avl->left;
-        right = avl->right;
+        it = avl->it;
+        left = avl->lc;
+        right = avl->rc;
     }
 
     ~AVLNode(){
-        delete left;
-        delete right;
+        delete lc;
+        delete rc;
     }
 
-    inline E& element() const{return element;}
-    AVLNode<E>& setElement(const E& element){
-        this->element = element;
+    inline E element() const{return it;}
+    AVLNode<E>* setElement(const E it){
+        this->it = it;
         return this;
     }
 
-    inline AVLNode<E>& left() const{return left;}
-    AVLNode<E>& setLeft(AVLNode<E>* left){
-        this->left = left;
+    inline AVLNode<E>* left() const{return lc;}
+    AVLNode<E>* setLeft(AVLNode<E>* lc){
+        this->lc = lc;
         return this;
     }
 
-    inline AVLNode<E>& right() const{return right;}
-    AVLNode<E>& setRight(AVLNode<E>* right){
-        this->right = right;
+    inline AVLNode<E>* right() const{ return rc; }
+    AVLNode<E>* setRight(AVLNode<E>* rc){
+        this->rc = rc;
+        return this;
+    }
+
+    AVLNode<E>* operator =(const AVLNode<E>* node){
+        this->it = node->it;
+        this->lc = node->lc;
+        this->rc = node->rc;
         return this;
     }
 };
