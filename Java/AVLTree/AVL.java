@@ -5,40 +5,39 @@ public class AVL<E extends Comparable<? super E>>{
     private final AVLNode<E> root;
 
     private AVLNode<E> rightRot(AVLNode<E> root){
-        AVLNode<E> temp = root.left().right();
-        AVLNode<E> new_root = root.left();
-        root.left().setRight(root);
-        root.setLeft(temp);
-        root = new_root;
+        // AVLNode<E> prevRoot = root;
+        // AVLNode<E> newRoot = root.left();
+        // AVLNode<E> newRootRight = root.left().right();
+        // prevRoot = prevRoot.setLeft(newRootRight);
+        // newRoot = newRoot.setRight(prevRoot);
+        // root = newRoot;
+        root = root.left().setRight(root.setLeft(root.left().right()));
         return root;
     }
 
     private AVLNode<E> leftRightRot(AVLNode<E> root){
-        AVLNode<E> new_left = root.left().right();
-        AVLNode<E> temp = new_left.left();
-        root.setLeft(new_left.setLeft(root.left().setRight(temp)));
-        root = rightRot(root);
-        return root;
+        root = root.setLeft(leftRot(root.left()));
+        return rightRot(root);
     }
 
     private AVLNode<E> leftRot(AVLNode<E> root) {
-        AVLNode<E> temp = root.right().right();
-        AVLNode<E> new_root = root.right();
-        root.right().setLeft(root);
-        root.setRight(temp);
-        root = new_root;
+        AVLNode<E> prevRoot = root;
+        AVLNode<E> newRoot = root.right();
+        AVLNode<E> newRootLeft = root.right().left();
+        
+        prevRoot = prevRoot.setRight(newRootLeft);
+        newRoot = newRoot.setLeft(prevRoot);
+        root = newRoot;
         return root;
     }
 
     private AVLNode<E> rightLeftRot(AVLNode<E> root) {
-        AVLNode<E> new_right = root.right().left();
-        AVLNode<E> temp = root.right();
-        root.setRight(new_right.setRight(root.right().setLeft(temp)));
-        root = leftRot(root);
-        return root;
+        root = root.setRight(rightRot(root.right()));
+        return leftRot(root);
     }
 
     private AVLNode<E> balance(AVLNode<E> root){
+        if(root == null)return null;
         int leftH = maxHeight(root.left());
         int rightH = maxHeight(root.right());
         if(Math.abs(leftH - rightH) <= 1)return root;
@@ -46,13 +45,13 @@ public class AVL<E extends Comparable<? super E>>{
             if (leftH > rightH + 1){
                 int leftleftH = maxHeight(root.left().left());
                 int leftrightH = maxHeight(root.left().right());
-                if(leftleftH > leftrightH)return rightRot(root);
+                if(leftleftH >= leftrightH)return rightRot(root);
                 else return leftRightRot(root);
             }
             else{
                 int rightleftH = maxHeight(root.right().left());
                 int rightrightH = maxHeight(root.right().right());
-                if(rightrightH > rightleftH)return leftRot(root);
+                if(rightrightH >= rightleftH)return leftRot(root);
                 else return rightLeftRot(root);
             }
         }
@@ -139,9 +138,6 @@ public class AVL<E extends Comparable<? super E>>{
         else if(element.compareTo(root.element()) < 0)root.setLeft(insert(root.left(), element));
         else root.setRight(insert(root.right(),element));
         root = balance(root);
-        System.out.println("================================================");
-        System.out.println(show(root));
-        System.out.println("================================================");
         return root;
     }
 
@@ -157,17 +153,17 @@ public class AVL<E extends Comparable<? super E>>{
         else if(element.compareTo(root.element()) < 0)root.setLeft(delete(root.left(), element));
         else if(element.compareTo(root.element()) > 0)root.setRight(delete(root.right(), element));
         else{
-            if(root.left() == null && root.right() == null)return null;
+            if(root.left() == null && root.right() == null)root = null;
             //isLeaf() method prevents following operations from ever happening
-            else if(root.left() == null)return root.right();
-            else if(root.right() == null)return root.left();
+            else if(root.left() == null)root = root.right();
+            else if(root.right() == null)root = root.left();
             else{
                 //finding inorder successor
                 AVLNode<E> inSuccessor = root.right();
                 while(inSuccessor.left() != null)inSuccessor = inSuccessor.left();
 
                 root.setElement(inSuccessor.element());
-                root.setRight(delete(root.right(),inSuccessor.element()));
+                root = root.setRight(delete(root.right(),inSuccessor.element()));
             }
         }
         root = balance(root);

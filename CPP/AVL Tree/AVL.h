@@ -47,16 +47,17 @@ class AVL{
             if(leftH > rightH + 1){
                 int leftLeftH = maxHeight(root->left()->left());
                 int leftRightH = maxHeight(root->left()->right());
-                if(leftLeftH > leftRightH)return rightRot(root);
-                else return leftRightRot(root);
+                if(leftLeftH >= leftRightH)return rightRot(root);
+                else  return leftRightRot(root);
             }
             else{
                 int rightLeftH = maxHeight(root->right()->left());
                 int rightRightH = maxHeight(root->right()->right());
-                if(rightRightH > rightLeftH)return leftRot(root);
+                if(rightRightH >= rightLeftH)return leftRot(root);
                 else return rightLeftRot(root);
             }
         }
+        return root;
     }
 public:
     AVL(){
