@@ -5,13 +5,12 @@ public class AVL<E extends Comparable<? super E>>{
     private final AVLNode<E> root;
 
     private AVLNode<E> rightRot(AVLNode<E> root){
-        // AVLNode<E> prevRoot = root;
-        // AVLNode<E> newRoot = root.left();
-        // AVLNode<E> newRootRight = root.left().right();
-        // prevRoot = prevRoot.setLeft(newRootRight);
-        // newRoot = newRoot.setRight(prevRoot);
-        // root = newRoot;
-        root = root.left().setRight(root.setLeft(root.left().right()));
+        AVLNode<E> prevRoot = root;
+        AVLNode<E> newRoot = root.left();
+        AVLNode<E> newRootRight = root.left().right();
+        prevRoot = prevRoot.setLeft(newRootRight);
+        newRoot = newRoot.setRight(prevRoot);
+        root = newRoot;
         return root;
     }
 
