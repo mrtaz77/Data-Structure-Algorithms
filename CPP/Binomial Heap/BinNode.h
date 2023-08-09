@@ -117,7 +117,7 @@ public:
         if(child() != NULL)cout<<"Child : "<<child()->element()<<endl;
         cout<<"================================================================\n";
         
-        // cout<<greater->parent()->element()<<" "<<element()<<endl;
+        cout<<greater->parent()->element()<<" "<<element()<<endl;
         cout<<degree()<<endl;
 
         return smaller;

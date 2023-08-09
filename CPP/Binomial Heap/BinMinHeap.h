@@ -29,7 +29,8 @@ public:
         if(other == NULL) return;
         BinMinHeap<E>* newHeap = new BinMinHeap<E>();
         int i = 0 , j = 0;
-        while(i < heap.size() || j < other->heap.size()){
+        cout<<heap.size()<<" "<<other->len()<<endl;
+        while(i < heap.size() && j < other->heap.size()){
             if(heap[i]->degree() >= other->heap[j]->degree()){
                 newHeap->heap.push_back(other->heap[j++]);
             }
@@ -37,6 +38,14 @@ public:
                 newHeap->heap.push_back(heap[i++]);
             }
         }
+        while(i<heap.size()){
+            newHeap->heap.push_back(heap[i++]);
+        }
+        while(j < other->heap.size()){
+            newHeap->heap.push_back(other->heap[j++]);
+        }
+        
+
         cout<<"New Heap init done : size "<<newHeap->heap.size()<<endl;
 
         i = 0;
@@ -91,6 +100,7 @@ public:
         E min = heap[minIndex]->element();
         BinMinHeap<E>* newHeap = new BinMinHeap<E>();
         BinNode<E>* lc = heap[minIndex]->child();
+        cout<<heap[minIndex]->degree()<<endl;
         heap[minIndex]->setChild(NULL);
         while(lc!=NULL){
             auto temp = lc;
@@ -105,7 +115,11 @@ public:
         }
         
         heap.erase(heap.begin()+minIndex);
-        Union(newHeap);
+        if(newHeap->len()!=0){
+            if(heap.size() != 0)Union(newHeap);
+            else heap = newHeap->heap;
+        }
+        print();
         return min;
     }
 

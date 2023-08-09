@@ -3,8 +3,9 @@
 # Compiled class file
 *.class
 *.exe
-
+*.bin
 # Log file
+*.cph
 *.vscode
 *.log
 *.lh

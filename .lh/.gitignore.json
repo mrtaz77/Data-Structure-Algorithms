@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 7,
+            "activePatchIndex": 9,
             "patches": [
                 {
                     "date": 1686144311349,
@@ -36,6 +36,14 @@
                 {
                     "date": 1687581878587,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n *.class\r\n *.exe\r\n \r\n # Log file\r\n-\r\n+*.vscode\r\n *.log\r\n *.lh\r\n \r\n # BlueJ files\r\n"
+                },
+                {
+                    "date": 1691621342313,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n \r\n # Compiled class file\r\n *.class\r\n *.exe\r\n-\r\n+*.bin\r\n # Log file\r\n *.vscode\r\n *.log\r\n *.lh\r\n"
+                },
+                {
+                    "date": 1691621348970,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,8 +4,9 @@\n *.class\r\n *.exe\r\n *.bin\r\n # Log file\r\n+\r\n *.vscode\r\n *.log\r\n *.lh\r\n \r\n"
                 }
             ],
             "date": 1686144311349,
