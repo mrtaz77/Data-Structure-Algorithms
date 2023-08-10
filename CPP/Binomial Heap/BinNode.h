@@ -89,36 +89,45 @@ public:
     BinNode<E>* unionNode(BinNode<E>* node) {
         if(node == NULL)return this;
         if(this == NULL)return node;
-        auto greater = (it >= node->it) ? this : node;
-        auto smaller = (it < node->it) ? this : node ;
-        cout<<greater->it<<" "<<smaller->it<<endl;
-        cout<<boolalpha<<(greater->child() == NULL)<<" "<<(smaller->child() == NULL)<<endl;
+        BinNode<E>* greater = new BinNode<E>();
+        BinNode<E>* smaller = new BinNode<E>();
+
+        if(it != node->it){
+            greater = (it > node->it) ? this : node;
+            smaller = (it < node->it) ? this : node ;
+        }
+        else{
+            smaller = this;
+            greater = node;
+        }
+        // cout<<greater->it<<" "<<smaller->it<<endl;
+        // cout<<boolalpha<<(greater->child() == NULL)<<" "<<(smaller->child() == NULL)<<endl;
 
         if(smaller->child() != NULL)greater = greater->setSibling(smaller->child());
         greater = greater->setParent(smaller);
         smaller = smaller->setChild(greater);
-        cout<<greater->it<<" "<<smaller->it<<endl;
+        // cout<<greater->it<<" "<<smaller->it<<endl;
         smaller->deg += 1;
 
-        cout<<element()<<endl;
-        if(parent() != NULL)cout<<"Parent : "<<parent()->element()<<endl;
-        if(child() != NULL)cout<<"Child :"<<child()->element()<<endl;
-        cout<<smaller->element()<<endl;
-        cout<<smaller->child()->element()<<endl;
-        cout<<"================================================================\n";
+        // cout<<element()<<endl;
+        // if(parent() != NULL)cout<<"Parent : "<<parent()->element()<<endl;
+        // if(child() != NULL)cout<<"Child :"<<child()->element()<<endl;
+        // cout<<smaller->element()<<endl;
+        // cout<<smaller->child()->element()<<endl;
+        // cout<<"================================================================\n";
         
         // set(smaller);
-        cout<<smaller->element()<<endl;
-        cout<<smaller->child()->element()<<endl;
+        // cout<<smaller->element()<<endl;
+        // cout<<smaller->child()->element()<<endl;
         
-        cout<<element()<<endl;
+        // cout<<element()<<endl;
         
-        if(parent() != NULL)cout<<"Parent : "<<parent()->element()<<endl;
-        if(child() != NULL)cout<<"Child : "<<child()->element()<<endl;
-        cout<<"================================================================\n";
+        // if(parent() != NULL)cout<<"Parent : "<<parent()->element()<<endl;
+        // if(child() != NULL)cout<<"Child : "<<child()->element()<<endl;
+        // cout<<"================================================================\n";
         
-        cout<<greater->parent()->element()<<" "<<element()<<endl;
-        cout<<degree()<<endl;
+        // cout<<greater->parent()->element()<<" "<<element()<<endl;
+        // cout<<degree()<<endl;
 
         return smaller;
     }
@@ -130,11 +139,11 @@ public:
         q.push({this,level});
         while(!q.empty()){
             level = q.front().second;
-            out+= "Level "+to_string(level)+": ";
-            cout<<"Level "+to_string(level)+": ";
+            out+= "Level "+to_string(level)+" : ";
+            // cout<<"Level "+to_string(level)+": ";
             while(!q.empty() && q.front().second == level){
                 out += to_string(q.front().first->element())+" ";
-                cout<<q.front().first->element()<<" ";
+                // cout<<q.front().first->element()<<" ";
                 if(q.front().first->child()!=NULL){
                     BinNode<E>* node = q.front().first->child();
                     while(node != NULL){
@@ -144,7 +153,7 @@ public:
                 }
                 q.pop();
             }
-            cout<<endl;
+            // cout<<endl;
             out+="\n";
         }
         return out;

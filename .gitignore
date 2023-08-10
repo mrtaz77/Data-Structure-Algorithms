@@ -1,11 +1,13 @@
-
+# Output Files
+*.txt
 
 # Compiled class file
 *.class
 *.exe
 *.bin
+*.ini
 # Log file
-*.cph
+.cph
 *.vscode
 *.log
 *.lh

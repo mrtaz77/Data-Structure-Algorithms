@@ -25,19 +25,28 @@ public:
     int len(){ return heap.size(); }
 
     void Union(BinMinHeap<E>* other){
-        cout<<"In Union"<<endl;
-        if(other == NULL) return;
+        // cout<<"In Union"<<endl;
+        if(other->len() == 0) return;
+        if(heap.size()==0){
+            heap = other->heap;
+            return;
+        }
         BinMinHeap<E>* newHeap = new BinMinHeap<E>();
         int i = 0 , j = 0;
-        cout<<heap.size()<<" "<<other->len()<<endl;
+        // cout<<heap.size()<<" "<<other->len()<<endl;
         while(i < heap.size() && j < other->heap.size()){
-            if(heap[i]->degree() >= other->heap[j]->degree()){
+            if(heap[i]->degree() > other->heap[j]->degree()){
                 newHeap->heap.push_back(other->heap[j++]);
             }
-            if(heap[i]->degree() <= other->heap[j]->degree()){
+            else if(heap[i]->degree() < other->heap[j]->degree()){
                 newHeap->heap.push_back(heap[i++]);
             }
+            else if(heap[i]->degree() == other->heap[j]->degree()){
+                newHeap->heap.push_back(heap[i++]);
+                newHeap->heap.push_back(other->heap[j++]);
+            }
         }
+        // cout<<newHeap->len()<<endl;
         while(i<heap.size()){
             newHeap->heap.push_back(heap[i++]);
         }
@@ -46,11 +55,11 @@ public:
         }
         
 
-        cout<<"New Heap init done : size "<<newHeap->heap.size()<<endl;
+        // cout<<"New Heap init done : size "<<newHeap->heap.size()<<endl;
 
         i = 0;
         for(; i < newHeap->heap.size() - 2 ;i++){
-            cout<<"In first for loop\n";
+            // cout<<"In first for loop\n";
             int curDegree = newHeap->heap[i]->degree();
             int nextDegree = newHeap->heap[i+1]->degree();
             int nextNextDegree = newHeap->heap[i+2]->degree();
@@ -60,7 +69,7 @@ public:
                 newHeap->heap.erase(newHeap->heap.begin()+i);
                 i--;
             }
-            cout<<i<<" "<<newHeap->heap.size()<<endl;
+            // cout<<i<<" "<<newHeap->heap.size()<<endl;
         }
 
         
@@ -69,14 +78,14 @@ public:
         if(i == (newHeap->heap.size() - 2)){
             int curDegree = newHeap->heap[i]->degree();
             int nextDegree = newHeap->heap[i+1]->degree();
-            cout<<curDegree<<" "<<nextDegree<<endl;
+            // cout<<curDegree<<" "<<nextDegree<<endl;
 
             if(curDegree == nextDegree){
                 newHeap->heap[i+1] = newHeap->heap[i]->unionNode(newHeap->heap[i+1]);
                 newHeap->heap.erase(newHeap->heap.begin()+i);
             }
         }
-        cout<<"Insertion Complete"<<endl;
+        // cout<<"Insertion Complete"<<endl;
 
         
         this->heap = newHeap->heap;
@@ -91,27 +100,27 @@ public:
     }
 
     E extractMin(){
-        cout<<"Milking min"<<endl;
+        // cout<<"Milking min"<<endl;
         int minIndex = 0;
         for (int i = 1; i < heap.size(); i++){
             if(heap[minIndex]->element()>heap[i]->element())minIndex = i;
         }
-        cout<<"Milked minIndex\n";
+        // cout<<"Milked minIndex\n";
         E min = heap[minIndex]->element();
         BinMinHeap<E>* newHeap = new BinMinHeap<E>();
         BinNode<E>* lc = heap[minIndex]->child();
-        cout<<heap[minIndex]->degree()<<endl;
+        // cout<<heap[minIndex]->degree()<<endl;
         heap[minIndex]->setChild(NULL);
         while(lc!=NULL){
             auto temp = lc;
             lc = lc->sibling();
             temp = temp->setParent(NULL);
             temp = temp->setSibling(NULL);
-            cout<<temp->printNode()<<endl;
+            // cout<<temp->printNode()<<endl;
             if(newHeap->len()==0)newHeap->heap.push_back(temp);
             else newHeap->Union(new BinMinHeap<E>(temp));
-            cout<<"Printing New MinHeap..."<<endl;
-            cout<<newHeap->print()<<endl;
+            // cout<<"Printing New MinHeap..."<<endl;
+            // cout<<newHeap->print()<<endl;
         }
         
         heap.erase(heap.begin()+minIndex);
@@ -119,15 +128,15 @@ public:
             if(heap.size() != 0)Union(newHeap);
             else heap = newHeap->heap;
         }
-        print();
+        // print();
         return min;
     }
 
     void insert(E it){
-        cout<<"Inserting "<<it<<endl;
+        // cout<<"Inserting "<<it<<endl;
         auto newHeap = new BinMinHeap<E>();
         newHeap->heap.push_back(new BinNode<E>(it));
-        cout<<"Inserted "<<it<<" in new Heap"<<endl;
+        // cout<<"Inserted "<<it<<" in new Heap"<<endl;
         if(heap.size() == 0)heap = newHeap->heap;
         else{ 
             Union(newHeap);
@@ -135,11 +144,11 @@ public:
     }
 
     string print(){
-        cout<<"Printing Binomial Heap..."<<heap.size()<<endl;
+        // cout<<"Printing Binomial Heap..."<<heap.size()<<endl;
         string out = "";
         out += "Printing Binomial Heap...\n";
         for(int i = 0; i < heap.size(); i++){
-            cout<<"Binomial Tree, B"<<heap[i]->degree()<<" "<<heap[i]->element()<<"\n";
+            // cout<<"Binomial Tree, B"<<heap[i]->degree()<<" "<<heap[i]->element()<<"\n";
             out += "Binomial Tree, B"+to_string(heap[i]->degree())+"\n";
             out+= heap[i]->printNode();
         }
