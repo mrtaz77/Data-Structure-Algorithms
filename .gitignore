@@ -1,6 +1,7 @@
 # Output Files
 *.txt
-
+*.bin
+*.txt
 # Compiled class file
 *.class
 *.exe

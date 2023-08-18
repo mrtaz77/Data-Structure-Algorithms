@@ -3,8 +3,8 @@
 using namespace std;
 
 int main(){
-    // freopen("in.txt", "r", stdin);
-    // freopen("out.txt", "w", stdout);
+    freopen("in.txt", "r", stdin);
+    freopen("out.txt", "w", stdout);
 
     BinMinHeap<int>* binHeap = new BinMinHeap<int>();
 

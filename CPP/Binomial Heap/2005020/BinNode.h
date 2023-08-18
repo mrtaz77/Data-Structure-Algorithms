@@ -85,7 +85,7 @@ public:
 
         if(it != node->it){
             newChild = (it > node->it) ? this : node;
-            newParent = (it < node->it) ? this : node ;
+            newParent = (it <= node->it) ? this : node ;
         }
         else{
             newParent = this;
