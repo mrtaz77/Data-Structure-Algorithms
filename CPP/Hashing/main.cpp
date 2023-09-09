@@ -1,7 +1,6 @@
 #include<bits/stdc++.h>
 #include"hashTable.h"
 #include"genReportUtil.h"
-
 #define MAX 1000007
 using namespace std;
 
@@ -14,7 +13,7 @@ int main(){
 
     auto words = rwg(10000,5,10);
 
-    srand(20);
+    srand(SEED);
     random_device rd;
     mt19937 gen(rd());
 

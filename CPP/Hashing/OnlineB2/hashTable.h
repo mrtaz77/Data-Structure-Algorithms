@@ -55,6 +55,7 @@ public:
         this->hashTable = ht.hashTable;
     }
 
+
     uint64_t hash1(string key){
         uint64_t hash = 0;
         uint64_t coeff = 1;
@@ -175,8 +176,7 @@ public:
         return true;
     }
 
-    bool delSepChain(uint64_t hash,string key,bool probCalc){
-        uint64_t probe = 1;
+    bool delSepChain(uint64_t hash,string key){
         list<pair<string,long long>>::iterator it = hashTable[hash].begin();
         while(it != hashTable[hash].end()){
             if(it->first == key){
@@ -186,13 +186,11 @@ public:
                 return true;
             }
             *it++;
-            if(probCalc)probe++;
         }
-        if(probCalc)totProbeDelete += probe;
         return false;
     }
 
-    bool delClosedHash(uint64_t hash,string key,bool probCalc){
+    bool delClosedHash(uint64_t hash,string key){
         uint64_t hashC = hash;
         uint64_t i = 0;
         while(vis[hashC] != empty){
@@ -222,10 +220,10 @@ public:
         else return insClosedHash(hash,key,val);
     }
 
-    bool erase(string key,bool probCalc){
+    bool erase(string key){
         uint64_t hash = hashType ? hash1(key) : hash2(key);
-        if(type == sepChain)return delSepChain(hash,key,probCalc);
-        else return delClosedHash(hash,key,probCalc);
+        if(type == sepChain)return delSepChain(hash,key);
+        else return delClosedHash(hash,key);
     }
 
     void print(){

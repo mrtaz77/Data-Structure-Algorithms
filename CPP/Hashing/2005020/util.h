@@ -1,5 +1,5 @@
 #include<bits/stdc++.h>
-#define SEED 20-1
+#define SEED 1331
 using namespace std;
 char alphabet[] = "abcdefghijklmnopqrstuvwxyz";
 
