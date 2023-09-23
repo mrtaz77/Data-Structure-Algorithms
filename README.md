@@ -32,8 +32,7 @@ The repository is organized as follows:
 
 ```
 /
-├── language1/
-│   ├── data_structures/
+├── cpp/
 │   │   ├── array/
 │   │   ├── linked_list/
 │   │   ├── stack/
@@ -45,16 +44,8 @@ The repository is organized as follows:
 │   │   ├── dynamic_programming/
 │   │   ├── hashing/
 │   │   └── ...
-│   ├── algorithms/
-│   │   ├── sorting/
-│   │   ├── searching/
-│   │   ├── graph/
-│   │   ├── dynamic_programming/
-│   │   └── ...
 │   └── ...
-├── language2/
-│   ├── data_structures/
-│   ├── algorithms/
+├── java/
 │   └── ...
 ├── ...
 └── README.md
@@ -63,19 +54,6 @@ The repository is organized as follows:
 The repository is organized by programming language, with each language having its own folder. Within each language folder, you'll find subfolders for different data structures and algorithms. These subfolders contain the respective implementation files.
 
 Feel free to explore the repository and choose the language and topic of your interest to dive deeper into data structures and algorithms!
-
-## Contributing
-
-Contributions to this repository are welcome! If you'd like to contribute an implementation or improve existing ones, please follow these guidelines:
-
-1. Fork the repository and create your branch from the `main` branch.
-2. Make your desired changes, ensuring clear and concise code with appropriate comments.
-3. Test your implementation to ensure correctness and performance.
-4. Commit your changes with a descriptive commit message.
-5. Push your changes to your forked repository.
-6. Open a pull request, providing a detailed description of your changes.
-
-By contributing to this repository, you help create a valuable resource for the developer community to learn and explore data structures and algorithms.
 
 ## License
 
