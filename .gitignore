@@ -9,9 +9,9 @@
 *.ini
 # Log file
 .cph
-*.vscode
+.vscode
 *.log
-*.lh
+.lh
 
 # BlueJ files
 *.ctxt
