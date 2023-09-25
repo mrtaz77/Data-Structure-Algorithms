@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 19,
+            "activePatchIndex": 26,
             "patches": [
                 {
                     "date": 1686144311349,
@@ -84,6 +84,34 @@
                 {
                     "date": 1695607339424,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n *.bin\r\n *.ini\r\n # Log file\r\n .cph\r\n-.vscode\r\n+/.vscode\r\n *.log\r\n .lh\r\n \r\n # BlueJ files\r\n"
+                },
+                {
+                    "date": 1695607441043,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,11 +8,11 @@\n *.bin\r\n *.ini\r\n # Log file\r\n .cph\r\n-/.vscode\r\n+.vscode\r\n *.log\r\n-.lh\r\n+/.lh\r\n \r\n # BlueJ files\r\n *.ctxt\r\n \r\n"
+                },
+                {
+                    "date": 1695607447271,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,11 +8,11 @@\n *.bin\r\n *.ini\r\n # Log file\r\n .cph\r\n-.vscode\r\n+.vscode/\r\n *.log\r\n-/.lh\r\n+.lh/\r\n \r\n # BlueJ files\r\n *.ctxt\r\n \r\n"
+                },
+                {
+                    "date": 1695607474124,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n *.bin\r\n *.ini\r\n # Log file\r\n .cph\r\n-.vscode/\r\n+/.vscode/\r\n *.log\r\n .lh/\r\n \r\n # BlueJ files\r\n"
+                },
+                {
+                    "date": 1695607481790,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,11 +8,11 @@\n *.bin\r\n *.ini\r\n # Log file\r\n .cph\r\n-/.vscode/\r\n+/.vscode\r\n *.log\r\n-.lh/\r\n+/.lh\r\n \r\n # BlueJ files\r\n *.ctxt\r\n \r\n"
+                },
+                {
+                    "date": 1695607508001,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n *.bin\r\n *.ini\r\n # Log file\r\n .cph\r\n-/.vscode\r\n+vscode\r\n *.log\r\n /.lh\r\n \r\n # BlueJ files\r\n"
+                },
+                {
+                    "date": 1695607513616,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,32 @@\n+# Output Files\r\n+*.txt\r\n+*.bin\r\n+*.txt\r\n+# Compiled class file\r\n+*.class\r\n+*.exe\r\n+*.bin\r\n+*.ini\r\n+# Log file\r\n+.cph\r\n+vscode/\r\n+*.log\r\n+/.lh/\r\n+\r\n+# BlueJ files\r\n+*.ctxt\r\n+\r\n+# Mobile Tools for Java (J2ME)\r\n+.mtj.tmp/\r\n+\r\n+# Package Files #\r\n+*.jar\r\n+*.war\r\n+*.nar\r\n+*.ear\r\n+*.zip\r\n+*.tar.gz\r\n+*.rar\r\n+\r\n+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml\r\n+hs_err_pid*\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1695607544986,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,11 +8,11 @@\n *.bin\r\n *.ini\r\n # Log file\r\n .cph\r\n-vscode/\r\n+.vscode/\r\n *.log\r\n-/.lh/\r\n+.lh\r\n \r\n # BlueJ files\r\n *.ctxt\r\n \r\n@@ -28,37 +28,5 @@\n *.tar.gz\r\n *.rar\r\n \r\n # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml\r\n-hs_err_pid*\n-# Output Files\r\n-*.txt\r\n-*.bin\r\n-*.txt\r\n-# Compiled class file\r\n-*.class\r\n-*.exe\r\n-*.bin\r\n-*.ini\r\n-# Log file\r\n-.cph\r\n-vscode\r\n-*.log\r\n-/.lh\r\n-\r\n-# BlueJ files\r\n-*.ctxt\r\n-\r\n-# Mobile Tools for Java (J2ME)\r\n-.mtj.tmp/\r\n-\r\n-# Package Files #\r\n-*.jar\r\n-*.war\r\n-*.nar\r\n-*.ear\r\n-*.zip\r\n-*.tar.gz\r\n-*.rar\r\n-\r\n-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml\r\n hs_err_pid*\n\\ No newline at end of file\n"
                 }
             ],
             "date": 1686144311349,
